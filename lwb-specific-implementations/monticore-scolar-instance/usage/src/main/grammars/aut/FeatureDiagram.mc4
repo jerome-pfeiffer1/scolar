@@ -1,0 +1,40 @@
+package aut;
+
+grammar FeatureDiagram extends ed.monticore.types.Types {
+
+  symbol scope FeatureDiagram =
+    "featurediagram" Name "{"
+      Element*
+    "}";
+
+  // ====== FEATURES ======
+
+    interface Element;
+    FeatureDefinition implements Element = "feature" (Name || ",")+ ";";
+
+  // ====== TREE STRUCTURE ======
+
+    TreeStructure implements Element = "tree" root:Feature (";")?;
+
+    symbol Feature = Name ("{" SubFeature* "}" | ";") ;
+
+    interface SubFeature;
+
+    //single sub features (i.e. no groups) must have the "optional"/"mandatory" keyword first and may have others afterwards
+    SingleSubFeature implements SubFeature = OptionalityKeyword Keyword* Feature ;
+
+    //all groups of features must contain multiple features
+    interface FeatureGroup extends SubFeature = GroupFeature+;
+
+    //Groups should contain at least two elements (divided by "or" or "xor")
+    OrFeatureGroup implements FeatureGroup = GroupFeature "or" ( GroupFeature || "or")+;
+    XorFeatureGroup implements FeatureGroup = GroupFeature "xor" ( GroupFeature || "xor")+;
+
+    //features in groups may have the "optional"/"mandatory" keyword as well as other keywords
+    GroupFeature = Keyword* Feature;
+
+    interface Keyword;
+
+    OptionalityKeyword implements Keyword = (["mandatory"] | ["optional"]);
+
+}

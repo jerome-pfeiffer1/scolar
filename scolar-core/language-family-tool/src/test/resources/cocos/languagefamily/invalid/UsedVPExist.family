@@ -1,0 +1,30 @@
+package cocos.languagefamily.invalid;
+
+family UsedVPExist {
+
+   featurediagram Architektur {
+     Architektur -> ConnectorCorrect? | Automaten?;
+     Automaten -> Automatenpruefung;
+   }
+
+  feature Architektur {
+    component general.montiarcexample.montiarc.MontiArc;
+  }
+
+  feature Automaten {
+    component cocos.languagefamily.resources._components.SC;
+    production Humbug1 -> Architektur.Verhalten;
+    gen Main2Java -> Architektur.Humbug2;
+    wfrs BasicSCCoCos;
+  }
+
+  feature Automatenpruefung {
+    component general.montiarcexample.statecharts.sccorrect.SCCorrect;
+    wfrs Humbug0;
+  }
+
+  feature ConnectorCorrect {
+    component general.montiarcexample.connectorCorrectness.ConnectorCorrectness;
+    wfrs ConnectorCorrect -> Architektur.BasicCoCos;
+  }
+}

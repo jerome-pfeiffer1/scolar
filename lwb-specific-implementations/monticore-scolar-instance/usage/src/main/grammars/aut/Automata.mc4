@@ -1,0 +1,13 @@
+package aut;
+
+grammar Automata extends ed.monticore.literals.Literals {
+
+symbol scope Automaton =
+  "automaton" Name "{" (State | Transition)* "}" ;
+
+symbol State =
+  "state" Name ( ("{" (State | Transition)* "}") | ";") ;
+
+Transition = from:Name "-" input:Name ">" to:Name ";" ;
+
+}

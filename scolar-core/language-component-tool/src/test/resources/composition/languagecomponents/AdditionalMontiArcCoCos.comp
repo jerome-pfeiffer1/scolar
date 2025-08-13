@@ -1,0 +1,15 @@
+package languagecomponents;
+
+language component AdditionalMontiArcCoCos {
+
+  grammar mc.lang.MontiArc;
+
+  wfrs NewGeneralCoCos for Component{
+    mc.lang.montiarc.cocos.SomeComponentCoCo;
+    mc.lang.montiarc.cocos.SomeParameterCoCo;
+  }
+
+  wfrs NewPortCoCo for Port{
+    mc.lang.montiarc.cocos.SomePortCoCo;
+  }
+}

@@ -1,0 +1,16 @@
+package languagecomponents;
+
+language component MontiArcCoCos {
+
+  grammar mc.lang.MontiArc;
+
+  wfrs BasicCocos for Component{
+    mc.lang.montiarc.cocos.ComponentNameUpperCase;
+    mc.lang.montiarc.cocos.InstanceNameLowerCase;
+    mc.lang.montiarc.cocos.PortNameUpperCase;
+    mc.lang.montiarc.cocos.ConnectorUsingExistingPorts;
+  }
+  wfrs NoInnerComponents for Component{
+    mc.lang.montiarc.newcocos.PreventInnerComponents;
+  }
+}

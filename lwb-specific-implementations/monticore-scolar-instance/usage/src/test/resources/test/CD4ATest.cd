@@ -1,0 +1,9 @@
+classdiagram CD4ATest {
+
+  class Bla {
+  }
+  class startGame {
+  }
+  class NoGame {
+  }
+}

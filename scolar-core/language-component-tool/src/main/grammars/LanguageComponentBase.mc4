@@ -1,0 +1,107 @@
+grammar LanguageComponentBase extends de.monticore.types.MCBasicTypes, de.monticore.CD4Code  {
+
+  LanguageComponentCompilationUnitA = LanguageComponentCompilationUnit | CDCompilationUnit;
+
+  LanguageComponentCompilationUnit =
+      ("package" package:(Name& || ".")+ ";")?
+      MCImportStatement*                        // import statements
+      LanguageComponent
+      ;
+
+  //ImportStatementLOCAL = "import" import:(Name& || ".")+ ("." Star:["*"])? ";" ;
+
+  scope symbol LanguageComponent =
+      (["xtext"] | ["monticore"])? "language" "component" Name "{"
+        GrammarDefinition+ LanguageComponentElement*
+      "}";
+
+  GrammarDefinition = "grammar" MCQualifiedName ";";
+
+  // ====================  GENERAL INTERFACES  ====================
+
+  interface LanguageComponentElement;
+
+  interface ProvidedExtension extends LanguageComponentElement =
+      "provides" Name ("for" referencedRule:Name)?;
+  interface RequiredExtension extends LanguageComponentElement =
+      "requires" Optionality (Composition)? Name ("for" referencedRule:Name)?;
+
+  enum Optionality = "optional" | "mandatory";
+
+  enum Composition = "embedding" | "aggregation";
+
+
+  // ====================  ABSTRACT-SYNTAX  ==========================
+
+  symbol ProvidedGrammarExtension implements ProvidedExtension =
+     "provides" "production" Name ("for" referencedRule:Name)? ";";
+
+  symbol RequiredGrammarExtension implements RequiredExtension =
+     "requires" Optionality Composition? "production" Name ("for" referencedRule:Name)? ";";
+
+
+  // ====================  WELL-FORMEDNESS  ==========================
+
+  /**
+   * Define a well-formedness rules provision point.
+   *
+   * @attribute name                Name of the provision point
+   * @attribute wfrDefinitionList  List of well-formedness rules provided in this
+   *                                 provision point.
+   */
+  symbol WfrSetDefinition implements LanguageComponentElement =
+      "wfrs" Name ("for" referencedRule:Name)? "{"
+        WfrDefinition+
+      "}";
+
+  /**
+   * Extension point for the declaration of well-formedness rule definitions
+   */
+  interface WfrDefinition = wfrReference:MCQualifiedName;
+
+  /**
+   * Defines the default representation of a well-formedness rule set
+   *
+   * @attribute wfrReference  Fully qualified reference to a well-formedness rule
+   */
+  DefaultWfrDefinition implements WfrDefinition =
+      wfrReference:MCQualifiedName ";";
+
+  /**
+   * Defines a parameter for a well-formedness rule
+   *
+   * @attribute type         The MCType of the parameter
+   * @attribute name         The name of the parameter
+   * @attribute wfrReference The fully qualified reference to the well-formedness
+   *                          rule that defines the parameter
+   */
+  symbol Parameter implements LanguageComponentElement =
+      "parameter" Optionality MCType Name
+      "for" (["wfr"] | ["transformation"]) reference:MCQualifiedName ";";
+
+
+  // ====================  GENERATOR  ==========================
+
+  symbol ProvidedGenExtension implements ProvidedExtension =
+      "provides" "gen" Name
+      ("for" referencedRule:Name)? "{"
+        (ProducerInterfaceRef | ProductInterfaceRef | GeneratorRef)*
+      "}";
+
+  symbol RequiredGenExtension implements RequiredExtension =
+      "requires" Optionality Composition? "gen" Name
+      ("for" referencedRule:Name)? "{"
+        (ProducerInterfaceRef | ProductInterfaceRef | GeneratorRef)*
+      "}" ;
+
+  ProducerInterfaceRef = "producer" Name ";";
+  ProductInterfaceRef = "product" Name ";";
+  GeneratorRef = "generator" Name ";";
+
+  symbol DomainModelDefinition = Name;
+
+
+  // ==================== IMPLICATION DEPENDENCY ======================
+  Implication implements LanguageComponentElement =
+    source:Name "implies" target:(Name || ",")+ ";";
+}

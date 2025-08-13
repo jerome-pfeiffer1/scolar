@@ -1,0 +1,20 @@
+package cocos.languageComponents.invalid;
+
+language component WFRSetNamesStartLowerCase {
+
+  grammar mc.lang.MontiArc;
+
+  wfrs noInnerComponents for Connector{
+    mc.lang.montiarc.cocos.DefaultParametersHaveCorrectOrder;
+    mc.lang.montiarc.cocos.ConnectorSourceAndTargetExistAndFit;
+  }
+
+  wfrs foo for Component {
+    mc.lang.montiarc.cocos.PreventInnerComponents;
+  }
+
+  wfrs Bar for Component {
+    mc.lang.montiarc.cocos.PreventInnerComponents;
+  }
+}
+

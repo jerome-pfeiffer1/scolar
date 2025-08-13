@@ -1,0 +1,8 @@
+package cocos.invalid;
+
+language component ReferencedGrammarNotExists {
+
+  grammar mc.lang.BlaBla;
+
+  provides production A;
+}

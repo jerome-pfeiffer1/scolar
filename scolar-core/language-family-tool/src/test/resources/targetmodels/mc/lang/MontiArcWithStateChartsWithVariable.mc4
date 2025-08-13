@@ -1,0 +1,13 @@
+package mc.lang;
+
+grammar MontiArcWithStateChartsWithVariable
+    extends mc.lang.StateCharts, mc.lang.MontiArc, mc.lang.Variable {
+
+  VariableDefinitionSCElement extends VariableDefinition implements SCElement =
+    Type Name;
+
+  SCMainBehaviorElement extends SCMain implements BehaviorElement =
+    "statechart" Name "{" SCBody "}";
+
+  start MACompilationUnit;
+}

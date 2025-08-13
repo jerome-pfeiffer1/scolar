@@ -1,0 +1,18 @@
+package general.montiarcexample.montiarc._generator;
+
+classdiagram MAInv2Java {
+
+  interface IMAInvGen;
+  
+  interface IMontiArcInvariantGenerator {
+    public void generate(ASTMontiArcInvariant ma, Path path);
+  
+    public Class<?> getTargetInterface();
+  }
+  
+  class MAInv2Java implements IMAInvGen;
+  
+  interface MAInvChecker {
+    public void checkInv();
+  }
+}

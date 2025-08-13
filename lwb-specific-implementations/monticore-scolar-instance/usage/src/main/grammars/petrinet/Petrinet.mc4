@@ -1,0 +1,23 @@
+package petrinet;
+
+component grammar Petrinet extends ed.monticore.types.Types {
+    scope Petrinet = "petrinet" Name "{"
+        (Place | Transition)*
+    "}";
+
+    Place = "place" PlaceProperty Name ";";
+    interface PlaceProperty;
+    Capacity implements PlaceProperty = "capacity" ":" IntLiteral;
+
+    Transition = "transition" TransitionProperty Name;
+    interface TransitionProperty;
+    Delay implements TransitionProperty = "delay" ":" IntLiteral;
+
+    interface Arc;
+    FromArc implements Arc = ArcProperty fromPlace:Name ">" toTransition:Name;
+    ToArc implements Arc = ArcProperty fromTransition:Name "<" toPlace:Name;
+    interface ArcProperty;
+    InhibitorArc implements ArcProperty = ["inhibitor"];
+    ReadArc implements ArcProperty = ["read"];
+
+}

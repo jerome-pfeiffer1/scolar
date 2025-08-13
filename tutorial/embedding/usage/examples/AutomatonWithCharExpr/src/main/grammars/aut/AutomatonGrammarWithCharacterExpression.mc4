@@ -1,0 +1,5 @@
+package aut;
+grammar AutomatonGrammarWithCharacterExpression extends characterexpression.CharacterExpression ,aut.AutomatonGrammar {
+   CharacterRuleIGuardExpr extends CharacterRule  implements IGuardExpr  = character:CharLiteral ;
+  start AutMain;
+}

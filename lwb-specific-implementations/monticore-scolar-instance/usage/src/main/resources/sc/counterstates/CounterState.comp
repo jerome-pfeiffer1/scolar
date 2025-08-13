@@ -1,0 +1,21 @@
+package sc.counterstates;
+
+import sc.counterstates._generator.CounterStateGeneratorDomain.*;
+import sc.counterstates._generator.*;
+import sc.counterstates.cocos.*;
+
+language component CounterState {
+  grammar sc.CounterStates;
+
+  provides production CounterState for CounterState;
+
+  provides gen CounterState2Java for CounterState {
+    generator CounterStateGenerator;
+    producer ICounterStateGenerator;
+    product ICounterState;
+  }
+
+  wfrs StepPositive for CounterState {
+    StepValuePositive;
+  }
+}

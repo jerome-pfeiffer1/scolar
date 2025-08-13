@@ -1,0 +1,8 @@
+package mc.lang;
+
+grammar MontiArcWithStateChartsWithVariableWithOCLInvariant extends mc.lang.OCLInvariant, mc.lang.MontiArcWithStateChartsWithVariable {
+  OCLInvMontiArcInvariant extends OCLInv implements MontiArcInvariant =
+    "ocl" "inv" Name;
+
+   start MACompilationUnit;
+}

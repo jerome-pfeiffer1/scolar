@@ -1,0 +1,14 @@
+package languagecomponents;
+
+language component SCGrammarForAgg {
+  grammar mc.lang.StateChart;
+
+  provides production AutMain for SCMain;
+  provides production AutKoerper for SCBody;
+
+  requires mandatory embedding production Variable for SCElement;
+
+  wfrs TransitionsCorrect for SCTransition {
+    mc.lang.statecharts.cocos.TransitionsCorrect;
+  }
+}

@@ -1,0 +1,43 @@
+package aut;
+
+import aut._generator.AutomatonDomain.*;
+import aut._generator._producer.AutomatonProducerDomain.*;
+import aut._generator._product.AutomatonProductDomain.*;
+import aut._generator.guard._producer.GuardProducerDomain.*;
+import aut._generator.guard._product.GuardProductDomain.*;
+import aut.automaton.cocos.*;
+
+language component Automaton {
+  grammar aut.AutomatonGrammar;
+
+  //provides production Aut for AutMain;
+
+  //requires optional production Guard for IGuardExpr;
+  
+  requires mandatory aggregation production AutomatonAdaption for AutMain; // for testing
+
+  wfrs InitialStateCoCos for StateBase {
+    NumberOfInitialStatesCorrect;
+  }
+
+  wfrs TransitionsCorrect for Transition {
+    TransitionsCorrect;
+  }
+
+  provides gen Aut2Java for AutMain {
+    generator AutGenerator;
+    producer IAutGenerator;
+    product IAutomaton;
+  }
+  
+  requires optional gen Guard2Java for IGuardExpr {
+    generator AutGenerator;
+    producer IGuardExpr2JavaGenerator;
+    product IGuardExpr;
+  }
+
+  Aut2Java implies Guard2Java;
+  Aut implies Guard;
+
+}
+  

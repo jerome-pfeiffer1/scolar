@@ -1,0 +1,16 @@
+package tal._generator;
+
+classdiagram TwitterActionGeneratorDomain {
+
+  // Producer interface
+  interface ITwitterActionGenerator {
+    void generateDirectMessageCall(String apiKey, tal.twitteraction._ast.ASTDirectMessage);
+    void generateTweetCallt(String apiKey, tal.twitteraction._ast,ASTTweet);
+  }
+
+  // Actual generator class 
+  class TwitterActionGenerator;
+
+  // Product interface
+  interface ITwitterApiCall;
+}

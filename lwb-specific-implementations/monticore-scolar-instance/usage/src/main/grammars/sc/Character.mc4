@@ -1,0 +1,5 @@
+package sc;
+
+grammar Character extends ed.monticore.literals.Literals{
+  CharacterRule = character:CharLiteral;
+}

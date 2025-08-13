@@ -1,0 +1,11 @@
+package cocos._generator._product;
+
+classdiagram MAInv2JavaProduct {
+
+  interface MAInvChecker {
+    public void checkInv();
+  }
+
+}
+
+

@@ -1,0 +1,15 @@
+package general.montiarcexample.vargen._generator._producer;
+
+classdiagram Var2JavaProducer {
+
+  interface IVariable2JavaGI {
+    public void generate(ASTVariable var, Path path);
+  
+    public Class<?> getTargetInterface();
+  }
+  
+  class Variable2JavaGenerator implements IVariable2JavaGI;
+  
+  interface IVar2Java;
+
+}

@@ -1,0 +1,21 @@
+package gencomposition;
+
+import gencomposition.domainmodel.statechart.SC2JavaProducer.*;
+import gencomposition.domainmodel.statechart.SC2JavaProduct.*;
+
+language component SC {
+
+  grammar mc.lang.StateCharts;
+
+  provides gen Main2Java for SCMain {
+    generator SC2Java;
+    producer ISCGen;
+    product ISCRTEBehavior;
+  }
+  
+  requires mandatory gen Element2Java for SCElement {
+    generator SC2Java;
+    producer ISCElementGen;
+    product ISCElementBehavior;
+  }
+}

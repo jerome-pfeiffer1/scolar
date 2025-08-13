@@ -1,0 +1,5 @@
+package aut;grammar AutomatonGrammarWithCharacterExpressionWithClockExpression extends characterexpression.CharacterExpression ,aut.AutomatonGrammar ,timedexpr.ClockExpression {
+   ClockExprIGuardExpr extends ClockExpr  implements IGuardExpr  =(["earlier"]|["later"])Time ;
+   CharacterRuleIGuardExpr extends CharacterRule  implements IGuardExpr  = character:CharLiteral ;
+  start AutMain;
+}

@@ -1,0 +1,16 @@
+package sc.finalstate._generator;
+
+classdiagram FinalStateGeneratorDomain {
+
+  interface IFinalStateGenerator {
+    void generate(sc.finalstate._ast.ASTFinalState fs, Path path);
+
+    Class<?> getTargetInterface();
+  }
+  
+  class FinalStateGenerator;
+
+  interface IFinalState {
+    String getName();
+  }
+}

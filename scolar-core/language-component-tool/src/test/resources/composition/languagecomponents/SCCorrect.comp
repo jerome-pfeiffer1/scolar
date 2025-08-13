@@ -1,0 +1,17 @@
+package languagecomponents;
+
+language component SCCorrect {
+  grammar mc.lang.StateCharts;
+
+  wfrs BasicSCCorrectCoCos for SCBody{
+    mc.lang.statecharts.cocos.SomeCoCo;
+    mc.lang.statecharts.cocos.TransitionsCorrect;
+  }
+
+  wfrs TransitionsCorrect for SCTransition{
+    mc.lang.statecharts.cocos.TransitionsCorrect;
+  }
+
+   parameter mandatory int maxTargets for wfr mc.lang.statecharts.cocos.TransitionsCorrect;
+   parameter optional String someParamName for wfr mc.lang.statecharts.cocos.SomeCoCo;
+}

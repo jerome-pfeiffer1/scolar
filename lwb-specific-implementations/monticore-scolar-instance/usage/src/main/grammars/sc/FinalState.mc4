@@ -1,0 +1,5 @@
+package sc;
+
+grammar FinalState extends ed.monticore.types.Types{
+  FState = "final" "state" Name;
+}

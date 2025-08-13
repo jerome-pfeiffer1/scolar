@@ -1,0 +1,16 @@
+package cocos._generator._producer;
+
+classdiagram MA2JavaProducer {
+
+  interface IBehaviorGen;
+  
+  interface IMontiArcGenerator {
+    public void generate(ASTMACompilationUnit ma, Path path);
+  
+    public Class<?> getTargetInterface();
+  }
+  
+  class MA2Java implements IBehaviorGen;
+  
+
+}

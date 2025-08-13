@@ -1,0 +1,17 @@
+package model;
+
+family AutomatonFamily {
+
+  featurediagram Automaton {
+      AutomatonFeature -> CharExprAutomaton;
+  }
+
+  feature AutomatonFeature {
+      component aut.Automaton;
+  }
+
+  feature CharExprAutomaton {
+      component characterexpression.CharExpr;
+      production CharAdaption -> AutomatonFeature.AutomatonAdaption;
+  }
+}

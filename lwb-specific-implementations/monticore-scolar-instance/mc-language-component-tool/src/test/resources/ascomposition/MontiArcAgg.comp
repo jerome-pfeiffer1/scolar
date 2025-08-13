@@ -1,0 +1,18 @@
+package ascomposition;
+
+language component MontiArcAgg {
+
+  grammar mc.lang.MontiArc;
+
+  provides production MACompUnit for MACompilationUnit;
+  provides production Komponente for Component;
+
+  requires optional production Verhalten for BehaviorElement;
+  requires optional production Invariante for Element;
+
+  requires optional gen Verhalten2Java for BehaviorElement {
+      generator MA2Java;
+      producer IBehaviorGen;
+      product  IComputable;
+    }
+}

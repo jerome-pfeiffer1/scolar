@@ -1,0 +1,30 @@
+package tal;
+
+import tal.*;
+import tal.twitteraction._cocos.*;
+import tal._generator.TwitterActionGeneratorDomain.*;
+
+language component TwitterActionComponent {
+  grammar tal.TwitterAction;
+
+  provides production TA for TwitterAction;
+
+  provides production TwitterAdaption for TwitterAdaptionPoint; // use this for testing and aggregate to aut
+  
+  provides gen TAGenerator for TwitterAction {
+  
+    // Hier braucht es Namenskonventionen oder Stereotypen 
+  
+    generator TwitterActionGenerator;
+    
+    producer ITwitterActionGenerator;
+    
+    product ITwitterApiCall;
+    
+  }
+
+  wfrs Checks for TwitterAction{
+    TweetsAreNoDirectMessages;
+  }
+  
+}

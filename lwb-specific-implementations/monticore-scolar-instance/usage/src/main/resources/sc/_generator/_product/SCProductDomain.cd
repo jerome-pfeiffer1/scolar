@@ -1,0 +1,13 @@
+package sc._generator._product;
+
+classdiagram SCProductDomain {
+
+  interface IAction;
+  
+  interface IGuardExpr;
+  
+  interface IState;
+  
+  interface IStatechart;
+
+}

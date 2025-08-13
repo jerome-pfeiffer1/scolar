@@ -1,0 +1,7 @@
+package mc.lang;
+
+grammar OCLInvariant extends de.monticore.types.Types {
+
+  OCLInv = "ocl" "inv" Name;
+
+}

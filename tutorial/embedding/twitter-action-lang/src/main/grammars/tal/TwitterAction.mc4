@@ -1,0 +1,12 @@
+package tal;
+
+grammar TwitterAction extends monticore.Literals {
+
+  TwitterAction = Tweet | DirectMessage;
+
+  symbol TwitterAdaptionPoint = Name "dummy";
+  
+  Tweet = "tweet" msg:StringLiteral;
+  
+  DirectMessage = "@" user:Name msg:StringLiteral;    
+}

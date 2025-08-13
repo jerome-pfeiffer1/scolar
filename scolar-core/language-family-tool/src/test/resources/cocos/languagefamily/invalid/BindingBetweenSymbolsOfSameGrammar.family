@@ -1,0 +1,35 @@
+package cocos.languagefamily.invalid;
+
+family BindingBetweenSymbolsOfSameGrammar {
+
+  featurediagram Architektur {
+    Architektur -> ConnectorCorrect? | Automaten?;
+    Automaten -> Automatenpruefung;
+  }
+
+  feature Architektur {
+    component general.montiarcexample.montiarc.MontiArc;
+  }
+
+  feature Automaten {
+    component cocos.languagefamily.resources._components.SC;
+    production AutMain -> Architektur.Verhalten2Java;
+    gen Main2Java -> Architektur.Verhalten;
+    production Main2Java -> Architektur.Verhalten;
+    gen AutMain -> Architektur.Verhalten2Java;
+    wfrs BasicSCCoCos;
+    wfrs AutMain -> Architektur.BasicCoCos;
+    wfrs AutMain -> Automatenpruefung.TransitionsCorrect;
+  }
+
+  feature Automatenpruefung {
+    component general.montiarcexample.statecharts.sccorrect.SCCorrect;
+    wfrs TransitionsCorrect;
+  }
+
+  feature ConnectorCorrect {
+    component general.montiarcexample.connectorCorrectness.ConnectorCorrectness;
+    wfrs ConnectorCorrect -> Architektur.Verhalten;
+    production ConnectorCorrect -> Architektur.Verhalten;
+  }
+}

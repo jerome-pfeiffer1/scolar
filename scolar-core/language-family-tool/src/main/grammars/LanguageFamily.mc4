@@ -1,0 +1,46 @@
+
+grammar LanguageFamily extends de.monticore.FeatureDiagram, LanguageComponentBase {
+
+  LanguageFamilyCompilationUnitA = LanguageFamilyCompilationUnit | LanguageComponentCompilationUnitA;
+
+  /**
+   *
+   */
+  LanguageFamilyCompilationUnit =
+    ("package" package:MCQualifiedName ";")? //package declaration
+    LanguageFamily;                          //a single language family
+
+
+  /**
+   *
+   */
+  symbol scope LanguageFamily =
+    "family" Name "{"
+      // LanguageComponents
+      features:FeatureDeclaration*
+      featureDiagram:FeatureDiagram
+      features:FeatureDeclaration*
+    "}";
+
+  /**
+   * Used to define Bindings
+   */
+  BindingElement =
+    "bind"? (["production"] | ["gen"] | ["wfrs"]) providedElement:Name
+    ("->" epFeature:Name "." epName:Name)? ";";
+
+  /**
+   * Specifies the realizing language component.
+   * Specifies the bindings between provided elements and extension points
+   */
+  symbol scope FeatureDeclaration = "abstract"? "feature" Name (abstractFeature:[";"] | "{"
+    "component" realizingComponentName:MCQualifiedName ";"
+    (BindingElement|RootConfigElement)*
+  "}");
+
+  interface RootConfigElement;
+
+  RulePPRootConfig implements RootConfigElement = "select"? "production" (Name||",")+ ";";
+  GenPPRootConfig implements RootConfigElement = "select"? "gen" (Name||",")+ ";";
+  WfrSetRootConfig implements RootConfigElement = "select"? "wfrs" (Name||",")+ ";";
+}

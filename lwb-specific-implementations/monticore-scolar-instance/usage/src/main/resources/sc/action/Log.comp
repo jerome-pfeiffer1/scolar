@@ -1,0 +1,15 @@
+package sc.action;
+
+import sc.charguard._generator.CharacterGeneratorDomain.*;
+
+language component Log {
+  grammar sc.LogLang;
+
+  provides production Log for Log;
+
+  provides gen Log2Java for Log {
+    generator CharacterGenerator;
+    producer ICharacterGenerator;
+    product ICharacter;
+  }
+}

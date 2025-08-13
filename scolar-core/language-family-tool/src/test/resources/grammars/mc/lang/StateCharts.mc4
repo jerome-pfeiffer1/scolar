@@ -1,0 +1,25 @@
+package mc.lang;
+
+grammar StateCharts extends de.monticore.types.Types{
+
+  SCCompilationUnit =
+      ("package" package:(Name& || ".")+ ";")?  // optional package declaration
+      (ImportStatementLOCAL)*                        // import statements
+      SCMain                                 // single outermost component declaration
+      EOF;                                      // and nothing (end of file) afterwards
+
+  //Only required until ImportStatement in Types.mc4 uses Name& instead of Name
+  ImportStatementLOCAL = "import" import:(Name& || ".")+ ("." Star:["*"])? ";" ;
+
+  SCMain = "statechart" Name "{"
+    SCBody
+  "}";
+
+  interface SCElement;
+
+  SCBody = SCElement+;
+
+  SCState implements SCElement = "state" Name;
+  SCTransition implements SCElement =
+    "transition" "from" from:Name "to" to:Name;
+ }

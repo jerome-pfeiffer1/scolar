@@ -1,0 +1,59 @@
+package general.montiarcexample;
+
+import general.montiarcexample.montiarc._generator.MA2Java.*;
+import general.montiarcexample.montiarc._generator.MAInv2Java.*;
+import general.montiarcexample.statecharts._generator._producer.SCElement2JavaProducer.*;
+import general.montiarcexample.statecharts._generator._product.SCElement2JavaProduct.*;
+import general.montiarcexample.variable._generator._producer.VarTrafosProducer.*;
+import general.montiarcexample.variable._generator._product.VarTrafosProduct.*;
+
+language component AutomatenArchitekturLanguageProduct {
+
+  grammar mc.lang.MontiArcWithStateChartsWithVariable;
+
+  provides production Komponente for Component;
+
+  requires optional production Verhalten for BehaviorElement;
+
+  requires optional production Invariante for MontiArcInvariant;
+
+  wfrs BasicCocos for Connector {
+    mc.lang.montiarc.cocos.ConnectorSourceAndTargetExistAndFit;
+  }
+
+  wfrs NoInnerComponents for Component {
+    mc.lang.montiarc.cocos.PreventInnerComponents;
+  }
+
+  provides gen Komponente2Java for Component {
+    producer IMontiArc2JavaGenerator;
+    product IComponent;
+  }
+
+  requires optional gen Verhalten2Java for BehaviorElement {
+    producer IBehaviorGen;
+    product IComputable;
+  }
+
+  requires optional gen Invariante2Java for MontiArcInvariant {
+    producer IMAInvGen;
+    product MAInvChecker;
+  }
+
+  parameter optional int max for wfr general.montiarcexample.statecharts.cocos.NumInitialStates;
+
+  requires optional production Var for SCElement;
+
+
+  requires optional gen SCElementTrafo for SCElement {
+    producer ISCElement2Java;
+    product ISCElementBehavior;
+  }
+
+
+  requires mandatory gen VarTrafo for VariableDefinition {
+    producer IVarGen;
+    product IVariable;
+  }
+
+}

@@ -1,0 +1,27 @@
+package cocos.languagefamily.resources._components;
+
+import statecharts._generator._producer.SC2JavaProducer.*;
+import statecharts._generator._product.SC2JavaProduct.*;
+
+language component SC {
+  grammar mc.lang.StateCharts;
+
+  provides production AutMain for SCMain;
+  provides production AutKoerper for SCBody;
+
+  wfrs BasicSCCoCos for Automaton {
+    statecharts.cocos.NumInitialStates;
+    statecharts.cocos.SourceAndTargetStateExist;
+  }
+
+  wfrs NumInitialStates for Automaton {
+    statecharts.cocos.NumInitialStates;
+  }
+
+  parameter optional int max for wfr statecharts.cocos.NumInitialStates;
+
+  provides gen Main2Java for SCMain {
+    producer ISCGen;
+    product ISCRTEBehavior;
+  }
+} 

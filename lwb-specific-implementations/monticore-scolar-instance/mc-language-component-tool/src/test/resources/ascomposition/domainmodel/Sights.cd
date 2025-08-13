@@ -1,0 +1,10 @@
+package ascomposition.domainmodel;
+
+classdiagram Sights {
+
+    class Rome {
+        void visitColosseum();
+        void visitPantheon();
+    }
+
+}

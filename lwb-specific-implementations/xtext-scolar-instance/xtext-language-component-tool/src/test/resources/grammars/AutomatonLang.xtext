@@ -1,0 +1,22 @@
+grammar org.xtext.example.AutomatonLang with org.eclipse.xtext.common.Terminals
+
+generate automatonLang "http://www.xtext.org/example/AutomatonLang"
+
+AutMain:
+	'automaton' name=ID '{' (state=IState | trans=Transition)* '}'; 
+	
+IState:
+	'state' name=ID;
+	
+Transition: 
+	source=ID '->' target=ID '[' guard=IGuardExpr ']' '/' '{' action=IAction '}'; 
+	
+IAction: 
+	(print='PRINT' | exec='EXEC' | send='SEND');
+	
+IGuardExpr:
+	expr='testGuard';
+ 
+
+
+	

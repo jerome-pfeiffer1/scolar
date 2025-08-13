@@ -1,0 +1,7 @@
+package aut._generator.guard._producer;
+
+classdiagram GuardProducerDomain {
+  
+  interface IGuardExpr2JavaGenerator;
+
+}

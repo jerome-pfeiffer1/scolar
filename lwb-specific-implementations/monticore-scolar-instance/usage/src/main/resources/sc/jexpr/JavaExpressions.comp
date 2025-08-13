@@ -1,0 +1,18 @@
+package sc.jexpr;
+
+import sc._generator.StatechartDomain.*;
+import sc._generator._producer.SCProducerDomain.*;
+import sc._generator._product.SCProductDomain.*;
+
+language component JavaExpressions {
+  grammar sc.JExpr;
+
+  provides production Java for JavaExpression;
+
+  provides gen JavaPrinter for JavaExpression {
+    generator SCGenerator;
+    producer ISCGenerator;
+    product IStatechart;
+  }  
+  
+}

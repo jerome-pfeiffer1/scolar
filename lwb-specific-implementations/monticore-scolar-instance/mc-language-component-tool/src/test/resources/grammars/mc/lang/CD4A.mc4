@@ -1,0 +1,11 @@
+package mc.lang;
+
+grammar CD4A extends de.monticore.MCBasics {
+
+symbol CD4ACompilationUnit = "classdiagram" Name "{" (CDType)* "}" ;
+
+symbol CDType = "class" Name "{" (CDMethod)* "}" ";" ;
+
+CDMethod = "void" Name ";" ;
+
+}

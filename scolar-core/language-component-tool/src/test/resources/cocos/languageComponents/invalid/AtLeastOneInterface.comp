@@ -1,0 +1,6 @@
+package cocos.languageComponents.invalid;
+
+
+language component AtLeastOneInterface {
+
+}

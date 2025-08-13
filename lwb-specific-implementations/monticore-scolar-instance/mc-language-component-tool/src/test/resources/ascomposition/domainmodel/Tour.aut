@@ -1,0 +1,10 @@
+package ascomposition.domainmodel;
+
+automaton Tour {
+
+    state Madrid;
+    state Rome;
+
+    Madrid - car > Rome;
+
+}

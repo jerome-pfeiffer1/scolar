@@ -1,0 +1,19 @@
+package cocos.languageComponents.invalid;
+
+language component LCContainsGrammarMultipleTimes {
+
+  grammar mc.lang.MontiArc;
+  grammar mc.lang.MontiArc;
+  grammar mc.lang.StateChart;
+  grammar mc.lang.StateChart;
+  grammar mc.lang.StateChart;
+  grammar mc.lang.OCLInvariant;
+
+  provides production ComponentBody for ComponentBody;
+  provides production Component for Component;
+  provides production Port for Port;
+
+  requires mandatory production Verhalten for BehaviorElement;
+  requires optional production Invariante for MontiArcInvariant;
+
+}

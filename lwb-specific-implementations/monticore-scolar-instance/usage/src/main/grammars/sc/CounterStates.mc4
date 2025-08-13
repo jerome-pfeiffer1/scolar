@@ -1,0 +1,5 @@
+package sc;
+
+grammar CounterStates extends ed.monticore.literals.Literals {
+  CounterState = "counter" "state" Name ("," "step" stepValue:SignedIntLiteral) ("," "start" startValue:SignedIntLiteral) ";";
+}

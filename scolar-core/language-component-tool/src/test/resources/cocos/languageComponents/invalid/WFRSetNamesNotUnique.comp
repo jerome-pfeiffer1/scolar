@@ -1,0 +1,18 @@
+package cocos.languageComponents.invalid;
+
+language component WFRSetNamesNotUnique {
+
+  grammar mc.lang.MontiArc;
+
+  wfrs NoInnerComponents for Connector{
+    mc.lang.montiarc.cocos.DefaultParametersHaveCorrectOrder;
+    mc.lang.montiarc.cocos.ConnectorSourceAndTargetExistAndFit;
+  }
+  
+  wfrs NoInnerComponents for Connector{
+    mc.lang.montiarc.cocos.DefaultParametersHaveCorrectOrder;
+    mc.lang.montiarc.cocos.ConnectorSourceAndTargetExistAndFit;
+  }
+
+}
+

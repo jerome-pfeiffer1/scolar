@@ -1,0 +1,46 @@
+package cocos.languageComponents.invalid;
+
+import general.montiarcexample.montiarc._generator.MA2Java.*;
+import general.montiarcexample.montiarc._generator.MAInv2Java.*;
+
+language component InvalidImplications {
+
+  grammar mc.lang.MontiArc;
+
+  provides production ComponentBody for ComponentBody;
+  provides production Component for Component;
+
+  provides production Port for Port;
+
+
+  requires mandatory production Verhalten for BehaviorElement;
+
+  requires optional production Invariante for MontiArcInvariant;
+
+  wfrs NoInnerComponents for Component {
+    mc.lang.montiarc.cocos.PreventInnerComponents;
+  }
+
+  ComponentBody implies Invariante; // Correct
+  Component implies Invariante; // Correct
+
+  Component implies Verhalten; // Correct
+  // Missing implication:
+  // ComponentBody implies Verhalten
+
+  Port implies Verhalten; // Error
+  Port implies Component; // Error
+
+  provides gen Komponente2Java for Component {
+    producer IMontiArc2JavaGenerator;
+    product IComponent;
+  }
+
+  Component implies Komponente2Java; // Correct
+  ComponentBody implies Komponente2Java; // Error
+  Port implies Komponente2Java; // Error
+
+  NoInnerComponents implies Invariante; // Error
+  NoInnerComponents implies Port; // 2x Error
+
+}

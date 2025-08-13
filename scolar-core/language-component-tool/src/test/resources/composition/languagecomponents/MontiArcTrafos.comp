@@ -1,0 +1,28 @@
+package languagecomponents;
+
+import montiarc._product.Arc2JavaProduct.*;
+import montiarc._producer.Arc2JavaProducer.*;
+
+language component MontiArcTrafos {
+
+  grammar mc.lang.MontiArc;
+
+  provides gen Komponente2Java for Component {
+    producer IMontiArc2JavaGenerator;
+    product IComponent;
+  }
+
+  requires mandatory gen Verhalten2Java for BehaviorElement {
+    producer IBehaviorElementJavaGen;
+    product  IComputable;
+  } 
+
+  requires optional gen PortTrafo for Port{
+    producer ILoggerGenerator;
+    product  ILoggingPort;
+  } 
+
+  Komponente2Java implies Verhalten2Java;
+  Komponente2Java implies PortTrafo;
+}
+

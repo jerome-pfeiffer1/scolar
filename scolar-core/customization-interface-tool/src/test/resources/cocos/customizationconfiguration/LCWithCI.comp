@@ -1,0 +1,14 @@
+package cocos.customizationconfiguration;
+
+// TODO Adapt to changes
+language component LCWithCI {
+  language components {
+    montiarc.MontiArc
+  }
+
+  requires optional production Verhalten for BehaviorElement;
+
+  requires optional production Invariante for MontiArcInvariant;
+
+  parameter optional int max for wfr statecharts.cocos.NumInitialStates;
+}

@@ -1,0 +1,39 @@
+grammar automatonext.AutomatonExtended with org.xtext.example.AutomatonLang
+
+generate automatonExtended "http://www.AutomatonExtended.automatonext"
+
+import "http://www.CharExpression.charexpr" as cExpr
+import "http://www.TimedExpression.timedexpr" as timedExpr
+import "http://www.PostAction.postact" as postAction
+
+
+Model:
+	autmain=AutMain
+;
+
+@Override
+IGuardExpr:
+	expr='testGuard' | timedExpr=ClockExpr | cExpr=CharacterRule;
+
+
+@Override
+IAction: (print='PRINT' | exec='EXEC' | send='SEND') | twitterAction=TwitterAction;
+
+ClockExpr returns timedExpr::ClockExpr:
+	(early='earlier' | later='later') time=Time;
+
+Time returns timedExpr::Time:
+	hours=INT ':' minutes=INT;
+
+CharacterRule returns cExpr::CharacterRule:
+	expr=ID;
+
+TwitterAction returns postAction::TwitterAction:
+  	post=Post | direct=DirectMessage;
+
+Post returns postAction::Post:
+  	"post" msg=STRING;
+
+DirectMessage returns postAction::DirectMessage:
+  	'@' user=ID msg=STRING;
+

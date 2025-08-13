@@ -1,0 +1,23 @@
+package general.montiarcexample.variable;
+
+import general.montiarcexample.variable._generator._producer.VarTrafosProducer.*;
+import general.montiarcexample.variable._generator._product.VarTrafosProduct.*;
+
+language component Var {
+
+  grammar mc.lang.Variable;
+
+  provides production Var for VariableDefinition;
+
+  requires mandatory gen VarTrafo for VariableDefinition {
+    producer IVarGen;
+    product IVariable;
+  }
+
+  provides gen VarGenerator for VariableDefinition {
+    producer IVariableTrafo;
+    product IVariable;
+  }
+
+  VarGenerator implies VarTrafo;
+}

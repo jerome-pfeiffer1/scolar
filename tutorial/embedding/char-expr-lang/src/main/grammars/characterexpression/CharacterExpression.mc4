@@ -1,0 +1,5 @@
+package characterexpression;
+
+grammar CharacterExpression extends monticore.Literals {
+  CharacterRule = character:CharLiteral;
+}

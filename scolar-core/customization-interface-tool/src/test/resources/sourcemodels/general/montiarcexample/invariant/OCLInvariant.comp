@@ -1,0 +1,15 @@
+package general.montiarcexample.invariant;
+
+import general.montiarcexample.invariant._generator._producer.Inv2JavaProducer.*;
+import general.montiarcexample.invariant._generator._product.Inv2JavaProduct.*;
+
+language component OCLInvariant {
+  grammar mc.lang.OCLInvariant;
+
+  provides production OCLInv for OCLInv;
+
+  provides gen Inv2Java for OCLInv {
+    producer IInvariantGen;
+    product IInvChecker;
+  }
+}

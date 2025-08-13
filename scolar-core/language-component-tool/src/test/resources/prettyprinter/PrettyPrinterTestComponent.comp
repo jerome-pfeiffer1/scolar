@@ -1,0 +1,43 @@
+package prettyprinter;
+
+import general.montiarcexample.montiarc._generator.MA2Java.*;
+import general.montiarcexample.montiarc._generator.MAInv2Java.*;
+
+language component PrettyPrinterTestComponent {
+  grammar mc.lang.MontiArc;
+
+  provides production Komponente for Component;
+
+  requires mandatory production Verhalten for BehaviorElement;
+  requires optional production Invariante for Element;
+
+  wfrs BasicCoCos for Connector {
+    mc.lang.montiarc.cocos.ConnectorSourceAndTargetExistAndFit;
+  }
+
+  wfrs NoInnerComponents for Component {
+    mc.lang.montiarc.cocos.PreventInnerComponents;
+  }
+
+  parameter mandatory int maxInnerComponentDepth for wfr mc.lang.moniarc.cocos.PreventInnerComponents;
+
+  provides gen Komponente2Java for Component {
+    producer IMontiArc2JavaGenerator;
+    product IComponent;
+  }
+
+  requires mandatory gen Verhalten2Java for BehaviorElement {
+    producer IBehaviorGen;
+    product  IComputable;
+  }
+
+  requires optional gen Invariante2Java for Element{
+    producer IMAInvGen;
+    product  MAInvChecker;
+  }
+
+  Komponente implies Verhalten2Java;
+  Komponente implies Invariante;
+  Komponente implies Invariante2Java;
+  Komponente implies Verhalten;
+}

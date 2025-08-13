@@ -1,0 +1,7 @@
+package sc;
+
+grammar JExpr {
+
+  JavaExpression = "Hello" "World" "!"; 
+
+}

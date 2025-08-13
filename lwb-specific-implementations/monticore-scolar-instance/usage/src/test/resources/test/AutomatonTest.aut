@@ -1,0 +1,14 @@
+automaton AutomatonTest {
+
+      state NoGame;
+      state Ping;
+      state Pong;
+      state Bla;
+
+      NoGame - startGame > Ping;
+      Ping - stopGame > NoGame;
+      Pong - stopGame > NoGame;
+      Ping - returnBall > Pong;
+      Pong - returnBall > Ping;
+      Bla - a > Ping;
+}

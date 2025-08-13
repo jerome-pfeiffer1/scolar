@@ -1,0 +1,26 @@
+package aut;
+
+family AutomatonFamily {
+
+  featurediagram Automaton {
+      AutomatonFeature -> CDTypeState;
+      AutomatonFeature -> FDFeatureAutomaton;
+  }
+
+  feature AutomatonFeature {
+      component aut.Automaton;
+  }
+
+  feature CDTypeState {
+      component aut.CD4An;
+      production CDTypeAdaption -> AutomatonFeature.StateAdaption;
+
+      //production CDTypeAdaption2 -> AutomatonFeature.AutomatonAdaption;
+  }
+
+  feature FDFeatureAutomaton {
+      component aut.FD;
+      production FDFeatureAdaption -> AutomatonFeature.AutomatonAdaption;
+
+  }
+}

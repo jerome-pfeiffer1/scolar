@@ -1,0 +1,10 @@
+package languagecomponents;
+
+language component ConnectorCorrectnessCoCos {
+
+  grammar mc.lang.MontiArc;
+
+  wfrs ConnectorCorrect for Connector{
+    connectorCorrectness.cocos.ConnectorCorrect;
+  }
+}

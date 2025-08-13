@@ -1,0 +1,9 @@
+package general.montiarcexample.statecharts._generator._producer;
+
+classdiagram SC2JavaProducer {
+
+  interface ISCGen;
+  
+  class SC2Java implements ISCGen;
+
+}

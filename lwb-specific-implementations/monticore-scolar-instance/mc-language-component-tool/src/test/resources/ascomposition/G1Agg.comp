@@ -1,0 +1,9 @@
+package ascomposition;
+
+language component G1Agg {
+
+    grammar mc.lang.G1;
+
+    requires optional production Test for D;
+
+}

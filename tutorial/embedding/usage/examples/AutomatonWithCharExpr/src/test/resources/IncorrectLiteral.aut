@@ -1,0 +1,11 @@
+statechart IncorrectLiteral {
+
+  state B;
+  initial state A;
+
+  A -> B ['b'] / {PRINT};
+  B -> CState ['c'] / {EXEC};
+  CState -> DState ['d'] / {EXEC};
+  CState -> EState ['\08'] / {EXEC}; // incorrect literals
+}
+

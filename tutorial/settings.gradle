@@ -1,0 +1,47 @@
+pluginManagement {
+    repositories {
+        maven {
+            url = uri("https://nexus.se.rwth-aachen.de/content/groups/public/")
+        }
+        gradlePluginPortal()
+    }
+}
+
+rootProject.name = 'monticore-tutorial'
+// Language projects for embedding
+include(':automata-lang')
+project(':automata-lang').projectDir = file("embedding/automata-lang")
+include(':automaton-family')
+project(':automaton-family').projectDir = file("embedding/automaton-family")
+include(':char-expr-lang')
+project(':char-expr-lang').projectDir = file("embedding/char-expr-lang")
+include(':timed-expr-lang')
+project(':timed-expr-lang').projectDir = file("embedding/timed-expr-lang")
+include(':twitter-action-lang')
+project(':twitter-action-lang').projectDir = file("embedding/twitter-action-lang")
+include(':helper-languages')
+project(':helper-languages').projectDir = file("embedding/helper-languages")
+include(':usage')
+project(':usage').projectDir = file("embedding/usage")
+
+// Language projects for aggregation
+/*
+include(':automata-lang')
+project(':automata-lang').projectDir = file("aggregation/automata-lang")
+include(':automaton-family')
+project(':automaton-family').projectDir = file("aggregation/automaton-family")
+include(':char-expr-lang')
+project(':char-expr-lang').projectDir = file("aggregation/char-expr-lang")
+include(':timed-expr-lang')
+project(':timed-expr-lang').projectDir = file("aggregation/timed-expr-lang")
+include(':twitter-action-lang')
+project(':twitter-action-lang').projectDir = file("aggregation/twitter-action-lang")
+include(':helper-languages')
+project(':helper-languages').projectDir = file("aggregation/helper-languages")
+include(':usage')
+project(':usage').projectDir = file("aggregation/usage")
+*/
+// include mc-language-component-tool from monticore-scolar-instance from local project folder
+//include(':mc-language-component-tool')
+//project(':mc-language-component-tool').projectDir = new File('$projectDir/../../monticore-scolar-instance/mc-language-component-tool')
+//project(':mc-language-component-tool').projectDir = new File('$projectDir/../../monticore-scolar-instance/mc-language-component-tool')

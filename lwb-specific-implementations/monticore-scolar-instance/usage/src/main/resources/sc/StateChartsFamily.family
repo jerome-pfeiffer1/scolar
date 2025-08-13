@@ -1,0 +1,46 @@
+package sc;
+
+family StateChartsFamily {
+
+  featurediagram SC {
+      SC -> FinalStateFeature? & Transition;
+      Transition -> LogAction? & Guard;
+      Guard -> CharFeature ^ JavaExpressionFeature;
+  }
+
+  feature SC {
+    component sc.StateChart;
+    select production SC;
+    select wfrs InitialStateCoCos;
+    select gen SC2Java;
+  }
+
+  abstract feature Transition;
+  abstract feature Guard;
+
+  feature FinalStateFeature {
+    component sc.finalstate.FinalState;
+    production FinalState -> SC.State;
+    wfrs FinalStateCoCos -> SC.InitialStateCoCos;
+    gen FinalStateGenerator -> SC.State2Java;
+  }
+  
+  feature LogAction {
+    component sc.action.Log;
+    production Log -> SC.Action;
+    gen Log2Java -> SC.Action2Java;
+  }
+
+  feature JavaExpressionFeature {
+    component sc.jexpr.JavaExpressions;
+    production Java -> Guard.Guard;
+    gen JavaPrinter -> Guard.Guard2Java;
+  }
+
+  feature CharFeature {
+    component sc.charguard.CharGuard;
+    production Character -> Guard.Guard;
+    gen CharacterGenerator -> Guard.Guard2Java;
+    wfrs UpperCaseCharacters;
+  }
+}

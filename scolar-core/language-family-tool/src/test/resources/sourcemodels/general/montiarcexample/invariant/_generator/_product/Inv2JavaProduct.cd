@@ -1,0 +1,8 @@
+package general.montiarcexample.invariant._generator._product;
+
+classdiagram Inv2JavaProduct {
+
+  interface IInvChecker {
+    public void check();
+  }
+}

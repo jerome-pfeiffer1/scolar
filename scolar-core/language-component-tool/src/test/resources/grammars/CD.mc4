@@ -1,0 +1,14 @@
+
+
+component grammar CD extends de.monticore.types.Types{
+
+  start CD;
+  CD = Class*;
+  Class = "class" Name "{" Method* "}";
+  Method = rt:Type Name "("")" "{" Behavior "}";  
+ 
+ 
+  interface Behavior;
+
+
+}

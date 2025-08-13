@@ -1,0 +1,25 @@
+package components.montiarc._generator;
+
+classdiagram MA2Java {
+
+  interface IBehaviorGen;
+  
+  interface IMontiArc2JavaGenerator {
+    public void generate(ASTMACompilationUnit ma, Path path);
+  
+    public Class<?> getTargetInterface();
+  }
+  
+  class MA2Java implements IBehaviorGen;
+
+  interface IComputable {
+    public void compute();
+  }
+
+  interface IComponent {
+    public void setUp();
+    public void init();
+    public void compute();
+    public void update();
+  }
+}

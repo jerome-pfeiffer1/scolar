@@ -1,0 +1,13 @@
+package aut;
+
+language component FD {
+
+    grammar aut.FeatureDiagram;
+
+    provides production Test1 for Feature;
+    provides production Test2 for Feature;
+
+    provides production FDFeatureAdaption for Feature;
+
+
+}

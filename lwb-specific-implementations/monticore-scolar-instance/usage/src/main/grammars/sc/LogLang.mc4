@@ -1,0 +1,7 @@
+package sc;
+
+grammar LogLang extends ed.monticore.types.Types {
+
+  Log = "log" String;
+  
+}

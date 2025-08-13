@@ -1,0 +1,21 @@
+package aut;
+
+language component Automaton {
+  grammar aut.AutomatonLang;
+
+  provides production Aut for AutMain;
+
+  requires optional production Guard for IGuardExpr;
+  requires optional production Action for IAction;
+
+  Aut implies Guard;
+
+  wfrs InitialStateCoCos for IState {
+    validation.NumberOfInitialStatesCorrect;
+  }
+
+  wfrs TransitionsCorrect for Transition {
+      validation.TransitionsCorrect;
+  }
+
+}

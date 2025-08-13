@@ -1,0 +1,11 @@
+statechart IncorrectCoCo {
+
+  state B;
+  initial state A;
+
+  A -> B ['b'] / {PRINT};
+  B -> CState ['c'] / {EXEC};
+  CState -> CState ['d'] / {EXEC}; // self-loop
+  CState -> EState ['e'] / {EXEC};
+}
+

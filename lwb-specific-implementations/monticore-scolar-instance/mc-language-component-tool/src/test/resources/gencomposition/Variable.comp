@@ -1,0 +1,15 @@
+package gencomposition;
+
+import gencomposition.domainmodel.variable.VariableDomain.*;
+
+language component Variable {
+
+  grammar mc.lang.Variable;
+  
+  provides gen Variable2Java for VariableDefinition {
+    generator Variable2Java;
+    producer IVariableGen;
+    product IVariable;
+  }
+
+}

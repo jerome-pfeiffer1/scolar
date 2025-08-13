@@ -1,0 +1,15 @@
+package gencomposition;
+
+import gencomposition.domainmodel.montiarc.MA2JavaProducer.*;
+import gencomposition.domainmodel.montiarc.MA2JavaProduct.*;
+
+language component MontiArc {
+
+  grammar mc.lang.MontiArc;
+
+  requires mandatory gen Verhalten2Java for BehaviorElement {
+    generator MA2Java;
+    producer IBehaviorGen;
+    product  IComputable;
+  }
+}

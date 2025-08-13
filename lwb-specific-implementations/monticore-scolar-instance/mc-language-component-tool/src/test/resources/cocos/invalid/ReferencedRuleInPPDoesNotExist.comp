@@ -1,0 +1,9 @@
+package cocos.invalid;
+
+language component ReferencedRuleInPPDoesNotExist {
+
+  grammar mc.lang.G1;
+
+  provides production A for N;
+
+}

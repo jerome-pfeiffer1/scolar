@@ -1,0 +1,12 @@
+package ascomposition;
+
+language component SCAgg {
+
+  grammar mc.lang.StateCharts;
+
+  provides production AutMain for SCMain;
+  provides production AutKoerper for SCBody;
+
+  requires optional production Var for SCElement;
+
+}

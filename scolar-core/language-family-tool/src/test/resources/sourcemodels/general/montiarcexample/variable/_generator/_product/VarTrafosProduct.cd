@@ -1,0 +1,7 @@
+package general.montiarcexample.variable._generator._product;
+
+classdiagram VarTrafosProduct {
+
+  interface IVariable;
+  
+}

@@ -1,0 +1,11 @@
+package aut;
+
+grammar CD4A extends ed.monticore.literals.Literals {
+
+symbol CD4ACompilationUnit = "classdiagram" Name "{" (CDType)* "}" ;
+
+symbol CDType = "class" Name "{" (CDMethod)* "}" ;
+
+CDMethod = "void" Name ";" ;
+
+}

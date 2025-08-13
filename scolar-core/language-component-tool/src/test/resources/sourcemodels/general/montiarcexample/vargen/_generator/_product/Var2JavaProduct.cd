@@ -1,0 +1,6 @@
+package general.montiarcexample.vargen._generator._product;
+
+classdiagram Var2JavaProduct {
+
+  interface IVar;
+}

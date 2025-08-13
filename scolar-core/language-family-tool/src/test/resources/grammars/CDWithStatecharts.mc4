@@ -1,0 +1,9 @@
+
+grammar CDWithStatecharts extends CD, StateCharts {
+
+  start CD;
+  BehaviorWithSCMain implements Behavior extends SCMain = "statechart" Name "{"
+    SCBody
+  "}";
+
+}

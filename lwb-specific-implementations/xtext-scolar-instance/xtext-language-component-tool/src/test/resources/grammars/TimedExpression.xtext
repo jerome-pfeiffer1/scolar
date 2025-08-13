@@ -1,0 +1,9 @@
+grammar timedexpr.TimedExpression with org.eclipse.xtext.common.Terminals
+
+generate timedExpression "http://www.TimedExpression.timedexpr"
+
+ClockExpr: 
+	(early='earlier' | later='later') time=Time;
+
+Time: 
+	hours=INT ':' minutes=INT;

@@ -1,0 +1,16 @@
+package cocos._generator._producer;
+
+classdiagram MAInv2JavaProducer {
+
+  interface IMAInvGen;
+  
+  interface IMontiArcInvariantGenerator {
+    public void generate(ASTMontiArcInvariant ma, Path path);
+  
+    public Class<?> getTargetInterface();
+  }
+  
+  class MAInv2Java implements IMAInvGen;
+  
+
+}

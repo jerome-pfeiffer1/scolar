@@ -1,0 +1,33 @@
+package cocos.languagefamily.invalid;
+
+family DeclaredFeaturesUsed {
+
+  featurediagram Architektur {
+    Architektur -> ConnectorCorrect? | Automaten?;
+    Automaten -> Automatenpruefung;
+  }
+
+
+  feature Architektur {
+    component general.montiarcexample.montiarc.MontiArc;
+  }
+
+  feature Automaten {
+    component cocos.languagefamily.resources._components.SC;
+    production AutMain -> Architektur.Verhalten;
+    gen Main2Java -> Architektur.Verhalten2Java;
+    wfrs BasicSCCoCos;
+  }
+
+  abstract feature SomeFeature;
+
+  feature Automatenpruefung {
+    component general.montiarcexample.statecharts.sccorrect.SCCorrect;
+    wfrs TransitionsCorrect;
+  }
+
+  feature ConnectorCorrect {
+    component general.montiarcexample.connectorCorrectness.ConnectorCorrectness;
+    wfrs ConnectorCorrect -> Architektur.BasicCoCos;
+  }
+}

@@ -1,0 +1,38 @@
+package general.montiarcexample.statecharts;
+
+import general.montiarcexample.statecharts._generator._producer.SC2JavaProducer.*;
+import general.montiarcexample.statecharts._generator._product.SC2JavaProduct.*;
+import general.montiarcexample.statecharts._generator._producer.SCElement2JavaProducer.*;
+import general.montiarcexample.statecharts._generator._product.SCElement2JavaProduct.*;
+
+language component SC {
+  grammar mc.lang.StateCharts;
+
+  provides production AutMain for SCMain;
+  provides production AutKoerper for SCBody;
+
+  requires optional production Var for SCElement;
+
+  wfrs BasicSCCoCos for Automaton {
+     general.montiarcexample.montiarc.statecharts.cocos.StateNamesUpperCase;
+     general.montiarcexample.montiarc.statecharts.cocos.SourceAndTargetStateExist;
+     general.montiarcexample.montiarc.statecharts.cocos.AtLeastOneState;
+     general.montiarcexample.montiarc.statecharts.cocos.NumInitialStates;
+  }
+
+  parameter optional int max for wfr general.montiarcexample.montiarc.statecharts.cocos.NumInitialStates;
+
+  provides gen Main2Java for SCMain {
+    producer ISCGen;
+    product ISCRTEBehavior;
+  }
+
+  requires optional gen SCElementTrafo for SCElement{
+    producer ISCElement2Java;
+    product ISCElementBehavior;
+  }
+
+  AutMain implies Var;
+  AutKoerper implies Var;
+  Main2Java implies SCElementTrafo;
+}

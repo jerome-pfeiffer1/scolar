@@ -1,0 +1,10 @@
+package sc;
+
+grammar StatechartWithFinalStateWithCharacterWithCounterStates extends sc.CounterStates, sc.StatechartWithFinalStateWithCharacter {
+  CounterStateIState extends CounterState implements IState =
+    "counter" "state" Name
+    ("," "step" stepValue:SignedIntLiteral)
+    ("," "start" startValue:SignedIntLiteral) ";";
+
+   start SCMain;
+}

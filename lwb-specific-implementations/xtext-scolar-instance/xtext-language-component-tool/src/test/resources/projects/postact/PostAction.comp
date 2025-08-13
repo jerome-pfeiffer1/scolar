@@ -1,0 +1,12 @@
+package postact;
+
+language component PostAction {
+  grammar postact.PostActionLang;
+
+  provides production TA for TwitterAction;
+
+  wfrs Checks for TwitterAction {
+    validation.TweetsAreNoDirectMessages;
+  }
+
+}

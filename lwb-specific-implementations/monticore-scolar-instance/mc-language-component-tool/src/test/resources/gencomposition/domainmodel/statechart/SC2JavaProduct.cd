@@ -1,0 +1,9 @@
+package gencomposition.domainmodel.statechart;
+
+classdiagram SC2JavaProduct {
+
+  interface ISCRTEBehavior;
+  
+  interface ISCElementBehavior;
+  
+}

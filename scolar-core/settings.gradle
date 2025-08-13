@@ -1,0 +1,16 @@
+pluginManagement {
+  repositories {
+    maven {
+      url = uri("https://nexus.se.rwth-aachen.de/content/groups/public/")
+    }
+    gradlePluginPortal()
+  }
+  plugins { // added to fix problems with multiple mc versions in path
+    id 'monticore' version '7.5.0'
+  }
+}
+
+rootProject.name = 'scolar-core'
+
+include 'language-component-tool', 'language-family-tool', 'customization-interface-tool'
+

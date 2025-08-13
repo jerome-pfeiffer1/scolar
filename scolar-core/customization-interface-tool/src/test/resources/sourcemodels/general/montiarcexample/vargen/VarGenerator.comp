@@ -1,0 +1,13 @@
+package general.montiarcexample.vargen;
+
+import general.montiarcexample.vargen._generator._producer.Var2JavaProducer.*;
+import general.montiarcexample.vargen._generator._product.Var2JavaProduct.*;
+
+language component VarGenerator {
+  grammar mc.lang.Variable;
+
+  provides gen Var2Java for VariableDefinition {
+    producer IVariable2JavaGI;
+    product IVar;
+  }
+}

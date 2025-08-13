@@ -1,0 +1,9 @@
+package languagecomponents;
+
+language component OCLInvGrammar {
+
+  grammar mc.lang.OCLInvariant;
+  
+  provides production OCLInv for OCLInv;
+
+}

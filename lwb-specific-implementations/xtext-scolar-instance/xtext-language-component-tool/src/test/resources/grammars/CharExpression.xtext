@@ -1,0 +1,6 @@
+grammar charexpr.CharExpression with org.eclipse.xtext.common.Terminals
+
+generate charExpression "http://www.CharExpression.charexpr"
+
+CharacterRule: 
+	expr=ID;

@@ -1,0 +1,17 @@
+package aut;
+
+component grammar AutomatonGrammar extends monticore.Types {
+
+  AutMain = "statechart" Name "{" (IState | Transition)* "}";
+
+  interface IState;
+  interface IAction;
+  interface IGuardExpr;
+
+  StateBase implements IState = ["initial"]? "state" Name ";";
+
+  Transition = source:Name "->" target:Name "[" IGuardExpr "]" "/" "{" IAction "}" ";";
+
+  Action implements IAction = (print:"PRINT" | exec:"EXEC" | send:"SEND");
+
+}

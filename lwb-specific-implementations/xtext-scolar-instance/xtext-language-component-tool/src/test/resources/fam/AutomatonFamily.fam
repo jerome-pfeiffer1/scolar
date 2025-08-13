@@ -1,0 +1,32 @@
+package fam;
+
+family AutomatonFamily {
+
+  featurediagram Automata {
+    Automata -> CharacterRecognition ^ TimedGuard;
+    Automata -> PostAction;
+  }
+
+  feature Automata {
+    component aut.Automaton;
+    select production Aut;
+    select wfrs TransitionsCorrect;
+  }
+
+  feature CharacterRecognition {
+    component character.CharExpression;
+    production Char -> Automata.Guard;
+    wfrs UpperCaseCharacters;
+  }
+
+  feature TimedGuard {
+    component timed.TimedExpression;
+    production Clock -> Automata.Guard;
+    wfrs TimeCorrectnessChecks;
+  }
+
+  feature PostAction {
+      component postact.PostAction;
+      production TA -> Automata.Action;
+  }
+}

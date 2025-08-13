@@ -1,0 +1,12 @@
+package character;
+
+language component CharExpression {
+  grammar character.CharExpressionLang;
+
+  provides production Char for CharacterRule;
+
+  wfrs UpperCaseCharacters for CharacterRule {
+    validation.CharactersUpperCase;
+  }
+
+}

@@ -1,0 +1,38 @@
+
+grammar CustomizationConfiguration extends LanguageComponentBase {
+
+  CCompilationUnitA = CCCompilationUnit | LanguageComponentCompilationUnitA;
+
+  /**
+   *
+   */
+  CCCompilationUnit =
+    ("package" package:MCQualifiedName ";")? //package declaration
+    CustomizationConfiguration;               //a single customization configuration
+  
+  symbol scope CustomizationConfiguration =
+    "customization" Name
+    "for" languageComponent:MCQualifiedName "{"
+      RootConfiguration
+      (ComponentBinding | ParameterAssignment)*
+    "}";
+
+  RootConfiguration =
+    "root" "configuration" "{"
+        (
+          ("production" asPP:(Name || ",")+
+          | "wfrs" wfrSet:(Name||",")+
+          | "gen" genPP:(Name || ",")+)
+          ";"
+        )*
+    "}"
+  ;
+
+  ComponentBinding =
+    "bind"? type:CCBindingType componentName:MCQualifiedName "." ppName:Name ("->" epName:Name)? ";";
+
+  ParameterAssignment =
+    "assign"? Name "=" value:Expression ";";
+
+  enum CCBindingType = as:"production" | gen:"gen" | wfr:"wfrs";
+}

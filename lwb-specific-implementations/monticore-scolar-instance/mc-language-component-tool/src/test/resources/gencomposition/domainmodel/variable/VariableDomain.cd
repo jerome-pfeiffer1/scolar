@@ -1,0 +1,11 @@
+package gencomposition.domainmodel.variable;
+
+classdiagram VariableDomain {
+
+  class Variable2Java implements IVariableGen;
+  
+  interface IVariableGen;
+  
+  interface IVariable;
+
+}

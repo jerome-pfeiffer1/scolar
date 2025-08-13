@@ -1,0 +1,32 @@
+package autfam;
+
+family AutomatonFamilyEmbedding {
+
+  featurediagram Automata {
+    Automata -> CharacterRecognition ^ TimedGuard;
+  }
+
+  feature Automata {
+    component aut.Automaton;
+
+    select production Aut;
+    select wfrs TransitionsCorrect;
+    select gen Aut2Java;
+  }
+
+  feature CharacterRecognition {
+    component characterexpression.CharExpr;
+
+    production Char                   -> Automata.Guard;
+    gen        CharacterGenerator     -> Automata.Guard2Java;
+    wfrs       UpperCaseCharacters;
+  }
+
+  feature TimedGuard {
+    component timedexpr.TimedExpression;
+    production Clock -> Automata.Guard;
+    wfrs TimeCorrectnessChecks;
+    gen TimedExprGenerator -> Automata.Guard2Java;
+  }
+
+}

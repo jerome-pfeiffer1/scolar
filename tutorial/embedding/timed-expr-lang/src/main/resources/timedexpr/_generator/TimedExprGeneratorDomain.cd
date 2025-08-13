@@ -1,0 +1,10 @@
+package timedexpr._generator;
+
+classdiagram TimedExprGeneratorDomain {
+
+  interface ITimedExprGenerator;
+
+  class TimedExpressionGenerator;
+
+  interface ITimedExpr;
+}

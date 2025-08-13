@@ -1,0 +1,27 @@
+package cocos.languagefamily.invalid;
+
+family RootFeatureIsNotAbstract {
+
+   featurediagram Architektur {
+     Architektur -> ConnectorCorrect? | Automaten?;
+     Automaten -> Automatenpruefung;
+   }
+
+
+  abstract feature Architektur;
+
+  feature Automaten {
+    component cocos.languagefamily.resources._components.SC;
+    wfrs BasicSCCoCos;
+  }
+
+  feature Automatenpruefung {
+    component general.montiarcexample.statecharts.sccorrect.SCCorrect;
+    wfrs TransitionsCorrect;
+  }
+
+  feature ConnectorCorrect {
+    component general.montiarcexample.connectorCorrectness.ConnectorCorrectness;
+    wfrs ConnectorCorrect -> Architektur.ConnectorRule;
+  }
+}

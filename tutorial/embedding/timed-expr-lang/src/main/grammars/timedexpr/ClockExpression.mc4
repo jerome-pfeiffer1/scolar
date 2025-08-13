@@ -1,0 +1,6 @@
+package timedexpr;
+
+grammar ClockExpression extends monticore.Literals {
+  ClockExpr = (["earlier"] | ["later"]) Time;
+  Time = hours:IntLiteral ":" minutes:IntLiteral;
+}

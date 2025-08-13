@@ -1,0 +1,11 @@
+package cocos.languageComponents.invalid;
+  
+language component ASPPAndEPNamesNotUnique {
+
+  grammar mc.lang.StateChart;
+
+  provides production AutMain for SCMain;
+  provides production AutMain for SCMain;
+  
+  provides production AutKoerper for SCBody;
+}

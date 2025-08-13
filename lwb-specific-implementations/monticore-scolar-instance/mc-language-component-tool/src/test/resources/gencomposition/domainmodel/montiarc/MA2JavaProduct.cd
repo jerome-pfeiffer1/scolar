@@ -1,0 +1,11 @@
+package gencomposition.domainmodel.montiarc;
+
+classdiagram MA2JavaProduct {
+
+  interface IComputable {
+    public void compute();
+  }
+
+}
+
+

@@ -1,0 +1,19 @@
+package languagecomponents;
+
+import statecharts._generator._producer.SC2JavaProducer.*;
+import statecharts._generator._product.SC2JavaProduct.*;
+
+language component SCTrafos {
+  grammar mc.lang.StateChart;
+
+  provides gen Main2Java for SCMain {
+    producer ISCBehaviorGenerator;
+    product ITransitionSystemProduct;
+  }
+ 
+  
+  provides gen Koerper2Java for SCBody {
+    producer IBodyGenerator;
+    product IBodyProduct;
+  }
+}

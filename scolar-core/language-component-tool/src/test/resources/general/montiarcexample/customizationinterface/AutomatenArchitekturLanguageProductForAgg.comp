@@ -1,0 +1,42 @@
+package general.montiarcexample.customizationinterface;
+
+import general.montiarcexample.montiarc._generator.MA2Java.*;
+import general.montiarcexample.montiarc._generator.MAInv2Java.*;
+
+
+language component AutomatenArchitekturLanguageProductForAgg {
+
+  grammar mc.lang.MontiArcWithStateCharts;
+
+  provides production Komponente for Component;
+
+  requires mandatory production Invariante for Element;
+  requires optional production Verhalten for BehaviorElement;
+
+  parameter optional Integer max for wfr statecharts.cocos.NumInitialStates;
+
+  wfrs BasicSCCoCos for SCMain{
+    statecharts.cocos.NumInitialStates;
+    statecharts.cocos.SourceAndTargetStateExist;
+  }
+
+  provides gen Komponente2Java for Component {
+    producer IMontiArc2JavaGenerator;
+    product IComponent;
+  }
+
+  requires mandatory aggregation gen Invariante2Java for Element{
+    producer IMAInvGen;
+    product MAInvChecker;
+  }
+
+  requires optional gen Verhalten2Java for BehaviorElement{
+    producer IBehaviorGen;
+    product IComputable;
+  }
+
+  Komponente implies Invariante;
+  Komponente implies Verhalten;
+  Komponente implies Invariante2Java;
+  Komponente implies Verhalten2Java;
+}

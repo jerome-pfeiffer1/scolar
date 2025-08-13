@@ -1,0 +1,8 @@
+package cocos.valid;
+
+language component ReferencedGrammarExists {
+
+  grammar mc.lang.G1;
+
+  provides production A;
+}

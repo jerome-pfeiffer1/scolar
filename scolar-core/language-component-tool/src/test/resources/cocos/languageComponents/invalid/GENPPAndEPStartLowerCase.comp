@@ -1,0 +1,26 @@
+package cocos.languageComponents.invalid;
+
+import cocos._generator._producer.MA2JavaProducer.*;
+import cocos._generator._product.MA2JavaProduct.*;
+import cocos._generator._producer.MAInv2JavaProducer.*;
+import cocos._generator._product.MAInv2JavaProduct.*;
+
+language component GENPPAndEPStartLowerCase {
+  grammar mc.lang.MontiArc;
+
+  provides gen komponente2Java for Component {
+    producer IMontiArcGenerator;
+    product IComputable;
+  }
+
+  
+  requires optional gen invariante2Java for MontiArcInvariant{
+    producer IMAInvGen;
+    product  MAInvChecker;
+  }
+
+  requires optional gen Something2Java for MontiArcInvariant{
+    producer IMAInvGen;
+    product  MAInvChecker;
+  }
+}

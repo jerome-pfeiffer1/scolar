@@ -1,0 +1,12 @@
+package mc.lang;
+
+grammar G1 {
+
+  A = "Hello" C Name B;
+  
+  B = "World!";
+
+  C = "Wrong Turn" B;
+
+  symbol D = Name;
+}

@@ -1,0 +1,13 @@
+package sc._generator._producer;
+
+classdiagram SCProducerDomain {
+
+  interface IAction2JavaGenerator;
+  
+  interface IGuardExpr2JavaGenerator;
+  
+  interface ISCGenerator;
+  
+  interface IState2JavaGen;
+
+}

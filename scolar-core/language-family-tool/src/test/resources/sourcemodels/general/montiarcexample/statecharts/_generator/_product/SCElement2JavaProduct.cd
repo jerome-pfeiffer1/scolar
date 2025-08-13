@@ -1,0 +1,6 @@
+package general.montiarcexample.statecharts._generator._product;
+
+classdiagram SCElement2JavaProduct {
+
+  interface ISCElementBehavior;  
+}

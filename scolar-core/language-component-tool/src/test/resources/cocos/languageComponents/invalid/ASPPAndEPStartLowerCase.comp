@@ -1,0 +1,12 @@
+package cocos.languageComponents.invalid;
+  
+language component ASPPAndEPStartLowerCase {
+
+  grammar mc.lang.StateChart;
+
+  provides production autMain for SCMain;
+  
+  provides production autKoerper for SCBody;
+
+  provides production Main for SCMain;
+}

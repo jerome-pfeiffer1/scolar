@@ -1,0 +1,41 @@
+package cocos.languagefamilyconfiguration.resources;
+
+family AutomatenArchitektur {
+  language components {
+    montiarc.MontiArc,
+    statecharts.SC,
+    connectorCorrectness.ConnectorCorrectness
+  }
+
+  tree Architektur{
+
+    optional ConnectorCorrect;
+
+    optional Automaten {
+      mandatory Automatenpruefung;
+    }
+
+
+  }
+
+  feature Architektur {
+    component montiarc.MontiArc;
+  }
+
+  feature Automaten {
+    component statecharts.SC;
+    production AutMain -> Architektur.Verhalten;
+    gen Main2Java -> Architektur.Verhalten2Java;
+    wfrs BasicSCCoCos;
+  }
+
+  feature Automatenpruefung {
+    component statecharts.sccorrect.SCCorrect;
+    wfrs TransitionsCorrect;
+  }
+
+  feature ConnectorCorrect {
+    component connectorCorrectness.ConnectorCorrectness;
+    wfrs ConnectorCorrect -> Architektur.ConnectorRule;
+  }
+}

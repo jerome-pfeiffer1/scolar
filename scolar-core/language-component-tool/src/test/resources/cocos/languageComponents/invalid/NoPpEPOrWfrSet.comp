@@ -1,0 +1,5 @@
+package cocos.languageComponents.invalid;
+
+language component NoPpEPOrWfrSet {
+  grammar mc.lang.MontiArc;
+}

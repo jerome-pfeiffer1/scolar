@@ -1,0 +1,9 @@
+package general.montiarcexample.invariant._generator._producer;
+
+classdiagram Inv2JavaProducer {
+
+  interface IInvariantGen;
+  
+  class Inv2Java implements IInvariantGen;
+  
+}

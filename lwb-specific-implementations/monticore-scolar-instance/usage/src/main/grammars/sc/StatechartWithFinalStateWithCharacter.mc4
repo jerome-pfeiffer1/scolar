@@ -1,0 +1,11 @@
+package sc;
+
+grammar StatechartWithFinalStateWithCharacter extends sc.FinalState, sc.Statechart, sc.Character {
+  CharacterRuleIGuardExpr extends CharacterRule implements IGuardExpr =
+    character:CharLiteral;
+
+  FStateIState extends FState implements IState =
+    "final" "state" Name;
+
+   start SCMain;
+}

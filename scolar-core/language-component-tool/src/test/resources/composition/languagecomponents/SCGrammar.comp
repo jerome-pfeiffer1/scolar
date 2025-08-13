@@ -1,0 +1,13 @@
+package languagecomponents;
+  
+language component SCGrammar {
+  grammar mc.lang.StateChart;
+  
+  provides production AutMain for SCMain;
+  provides production AutKoerper for SCBody;
+
+  requires mandatory production Variable for SCElement;
+
+  AutMain implies Variable;
+  AutKoerper implies Variable;
+}

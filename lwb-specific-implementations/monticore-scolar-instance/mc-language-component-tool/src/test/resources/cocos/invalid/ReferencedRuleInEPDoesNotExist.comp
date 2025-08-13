@@ -1,0 +1,10 @@
+package cocos.invalid;
+
+language component ReferencedRuleInEPDoesNotExist {
+
+  grammar mc.lang.G1;
+
+  provides production A for A;
+
+  requires optional embedding production OtherEP for NonExisting;
+}

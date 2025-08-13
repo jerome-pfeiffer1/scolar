@@ -1,0 +1,13 @@
+package languagecomponents;
+
+language component MontiArcGrammar {
+  grammar mc.lang.MontiArc;
+  
+  provides production Komponente for Component;
+
+  requires mandatory production Verhalten for BehaviorElement;
+  requires optional production Invariante for Invariant;
+
+  Komponente implies Verhalten;
+  Komponente implies Invariante;
+} 

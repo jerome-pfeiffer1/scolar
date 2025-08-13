@@ -1,0 +1,15 @@
+package aut;
+
+language component CD4An {
+
+    grammar aut.CD4A;
+
+    provides production CDTypeAdaption for CDType;
+
+    provides production CDTypeAdaption2 for CDType;
+
+    provides production NoUseHere for CDType;
+
+    requires optional production AnotherNoUsage for CDType;
+
+}

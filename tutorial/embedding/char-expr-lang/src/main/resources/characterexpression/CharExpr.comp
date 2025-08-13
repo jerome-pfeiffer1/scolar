@@ -1,0 +1,21 @@
+package characterexpression;
+
+import characterexpression._generator.CharacterGeneratorDomain.*;
+import characterexpression.characterexpression.cocos.*;
+
+language component CharExpr {
+  grammar characterexpression.CharacterExpression;
+
+  provides production Char for CharacterRule;
+
+  provides gen CharacterGenerator for CharacterRule {
+    generator CharacterGenerator;
+    producer ICharacterGenerator;
+    product ICharacter;
+  }
+
+  wfrs UpperCaseCharacters for CharacterRule {
+    CharactersUpperCase;
+  }
+
+}

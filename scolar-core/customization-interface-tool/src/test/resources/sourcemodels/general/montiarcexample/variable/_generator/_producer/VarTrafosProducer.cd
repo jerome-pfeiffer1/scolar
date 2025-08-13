@@ -1,0 +1,15 @@
+package general.montiarcexample.variable._generator._producer;
+
+classdiagram VarTrafosProducer {
+
+  interface IVariableTrafo {
+    public void generate(ASTVariable var, Path path);
+  
+    public Class<?> getTargetInterface();
+  }
+  
+  class VariableTransformation implements IVariableTrafo;
+  
+  interface IVarGen;
+
+}

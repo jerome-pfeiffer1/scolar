@@ -1,0 +1,9 @@
+package general.montiarcexample.connectorCorrectness;
+
+language component ConnectorCorrectness {
+  grammar mc.lang.MontiArc;
+
+  wfrs ConnectorCorrect for Connector {
+    general.montiarcexample.connectorCorrectness.cocos.ConnectorCorrect;
+  }
+}

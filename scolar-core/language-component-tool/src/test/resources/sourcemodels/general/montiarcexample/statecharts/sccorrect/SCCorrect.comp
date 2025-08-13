@@ -1,0 +1,18 @@
+package general.montiarcexample.statecharts.sccorrect;
+
+language component SCCorrect {
+  grammar mc.lang.StateCharts;
+
+  wfrs BasicSCCorrectCoCos for SCBody{
+    general.montiarcexample.statecharts.sccorrect.cocos.SomeCoCo;
+    general.montiarcexample.statecharts.sccorrect.cocos.TransitionsCorrect;
+  }
+
+  wfrs TransitionsCorrect for SCTransition{
+    general.montiarcexample.statecharts.sccorrect.cocos.TransitionsCorrect;
+  }
+
+   parameter mandatory Integer maxTargets for wfr general.montiarcexample.statecharts.sccorrect.cocos.TransitionsCorrect;
+   parameter optional String someParamName for wfr general.montiarcexample.statecharts.sccorrect.cocos.SomeCoCo;
+   parameter mandatory Boolean booleanParameter for wfr general.montiarcexample.statecharts.sccorrect.cocos.SomeCoCo;
+}

@@ -1,0 +1,67 @@
+package sc;
+
+import sc._generator.*;
+import sc._generator._producer.*;
+import sc._generator._product.*;
+import sc.statechart.cocos.*;
+import sc._generator.StatechartDomain.*;
+import sc._generator._producer.SCProducerDomain.*;
+import sc._generator._product.SCProductDomain.*;
+
+language component StateChart {
+    grammar sc.Statechart;
+  
+    provides production SC for SCMain;
+    requires optional production State for IState;
+    requires optional production Action for IAction;
+    requires mandatory production Guard for IGuardExpr;
+
+    wfrs InitialStateCoCos for StateBase {
+        NumberOfInitialStatesCorrect;
+    }
+
+    wfrs TransitionsCorrect for Transition {
+        TransitionsCorrect;
+    }
+
+    parameter optional Integer maxNumberOfStates
+        for wfr NumberOfInitialStatesCorrect;
+
+    parameter mandatory IActionInterpreter actionInterpreter
+        for transformation SCGenerator;
+
+    provides gen SC2Java for SCMain {
+        generator SCGenerator;
+        producer ISCGenerator;
+        product IStatechart;
+    }
+
+    requires optional gen State2Java for IState{
+        generator SCGenerator;
+        producer IState2JavaGen;
+        product IState;
+    }
+
+    requires optional gen Action2Java for IAction{
+        generator SCGenerator;
+        producer IAction2JavaGenerator;
+        product IAction;
+    }
+
+    requires mandatory gen Guard2Java for IGuardExpr {
+        generator SCGenerator;
+        producer IGuardExpr2JavaGenerator;
+        product IGuardExpr;
+    }
+
+    SC implies State;
+    SC implies Guard2Java;
+    SC implies Action;
+    SC2Java implies Action2Java;
+    SC2Java implies State2Java;
+    SC implies Action2Java;
+    SC implies Guard;
+    SC2Java implies Guard2Java;
+    SC implies State2Java;
+}
+  

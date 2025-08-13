@@ -1,0 +1,11 @@
+package general.montiarcexample.statecharts._generator._producer;
+
+classdiagram SCElement2JavaProducer {
+
+  interface ISCElementGen;
+  
+  class SCElement2Java implements ISCElementGen;
+  
+  interface ISCElement2Java;
+
+}

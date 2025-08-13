@@ -1,0 +1,13 @@
+
+class CDWithSC {
+
+  Integer test() {
+    statechart MyStatechart {
+      state S1
+      state S2
+      
+      transition from S1 to S2
+    }
+  }
+
+}

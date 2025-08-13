@@ -1,0 +1,11 @@
+package ascomposition;
+
+language component CD4AAgg {
+
+    grammar mc.lang.CD4A;
+
+    provides production CDTypeAdaption for CDType;
+
+    requires optional production AnotherExtension for CDType;
+
+}

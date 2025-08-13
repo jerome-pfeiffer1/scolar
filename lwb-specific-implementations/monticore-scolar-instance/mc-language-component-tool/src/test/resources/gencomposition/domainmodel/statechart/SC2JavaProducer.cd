@@ -1,0 +1,10 @@
+package gencomposition.domainmodel.statechart;
+
+classdiagram SC2JavaProducer {
+
+  interface ISCGen;
+  
+  class SC2Java implements ISCGen;
+
+  interface ISCElementGen;
+}

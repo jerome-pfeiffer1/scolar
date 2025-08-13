@@ -1,0 +1,13 @@
+statechart CorrectModel {
+
+  state B;
+  initial state A;
+  state C;
+  state D;
+  state E;
+
+  A -> B [earlier 9:30] / {PRINT};
+  B -> C ['c'] / {EXEC};
+  C -> D [later 12:00] / {EXEC};
+  C -> E ['e'] / {EXEC};
+}

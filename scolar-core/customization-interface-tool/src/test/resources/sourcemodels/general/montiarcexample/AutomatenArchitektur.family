@@ -1,0 +1,61 @@
+package general.montiarcexample;
+
+family AutomatenArchitektur {
+  language components {
+    general.montiarcexample.montiarc.MontiArc,
+    general.montiarcexample.statecharts.SC,
+    general.montiarcexample.connectorCorrectness.ConnectorCorrectness,
+    general.montiarcexample.statecharts.sccorrect.SCCorrect,
+    general.montiarcexample.vargen.VarGenerator,
+    general.montiarcexample.variable.Var
+  }
+
+  tree Architektur{
+
+    optional ConnectorCorrect;
+
+    optional Automaten {
+      mandatory Automatenpruefung;
+
+      optional Variable {
+        optional Variable2JavaGenerator;
+      }
+    }
+
+  }
+
+  feature Architektur {
+    component general.montiarcexample.montiarc.MontiArc;
+    select production MACompUnit;
+    select wfrs BasicCoCos, BasicSCCoCos, NoInnerComponents;
+    select gen Komponente2Java;
+  }
+
+  feature Automaten {
+    component general.montiarcexample.statecharts.SC;
+    production AutMain -> Architektur.Verhalten;
+    gen Main2Java -> Architektur.Verhalten2Java;
+    wfrs BasicSCCoCos;
+  }
+
+  feature Automatenpruefung {
+    component general.montiarcexample.statecharts.sccorrect.SCCorrect;
+    wfrs TransitionsCorrect -> Automaten.BasicSCCoCos;
+  }
+
+  feature Variable2JavaGenerator {
+    component general.montiarcexample.vargen.VarGenerator;
+    gen Var2Java -> Variable.VarTrafo;
+  }
+
+  feature Variable {
+    component general.montiarcexample.variable.Var;
+    production Var -> Automaten.Var;
+    gen VarGenerator -> Automaten.SCElementTrafo;
+  }
+
+  feature ConnectorCorrect {
+    component general.montiarcexample.connectorCorrectness.ConnectorCorrectness;
+    wfrs ConnectorCorrect -> Architektur.BasicCoCos;
+  }
+}

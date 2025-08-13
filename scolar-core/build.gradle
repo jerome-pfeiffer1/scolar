@@ -1,0 +1,85 @@
+/* (c) https://github.com/MontiCore/monticore */
+
+plugins {
+    id "java"
+    id "monticore" //version "$mc_version" // MontiCore Plugin
+    id "maven-publish"
+    id "io.github.themrmilchmann.ecj" version "0.2.0" apply false
+    // useful reports
+    // todo: reactivate this plugin when new version compatible to gradle 6.0.1 is available
+//    id 'cz.malohlava.visteg' version '1.0.5'
+    id 'jacoco'
+}
+
+
+group = "scolar"
+version = '1.0.4-SNAPSHOT'
+description = "SCOLAR CORE"
+sourceCompatibility = "11"
+
+buildDir = file("$projectDir/target")
+
+
+allprojects {
+    ext.grammarDir = 'src/main/grammars'
+    buildDir = file("$projectDir/target")
+
+    repositories {
+        maven {
+            url repo
+        }
+        gradlePluginPortal()
+    }
+}
+
+
+task cleanSCOLAR {
+    dependsOn ":language-component-tool:clean"
+    dependsOn ":language-family-tool:clean"
+    dependsOn ":customization-interface-tool:clean"
+}
+
+defaultTasks 'build'
+
+repositories {
+    maven {
+        url repo
+    }
+    gradlePluginPortal()
+}
+
+// build sources jar with handwritten + generated sources
+task sourcesJar(type: Jar) {
+    archiveClassifier = 'sources'
+    from(sourceSets.main.allJava)
+}
+
+sourcesJar.dependsOn project.collect { it.tasks.withType(MCTask) }
+
+
+// configure deployment
+publishing {
+    // configure what artifacts to publish
+    publications {
+        scolar(MavenPublication) {
+            artifactId = "$project.name"
+            from components.java
+        }
+    }
+    repositories.maven {
+        credentials.username mavenUser
+        credentials.password mavenPassword
+        def releasesRepoUrl = "https://nexus.se.rwth-aachen.de/content/repositories/scolar-releases/"
+        def snapshotsRepoUrl = "https://nexus.se.rwth-aachen.de/content/repositories/scolar-snapshots/"
+        url = version.endsWith("SNAPSHOT") ? snapshotsRepoUrl : releasesRepoUrl
+    }
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = "UTF-8"
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_11
+    targetCompatibility = JavaVersion.VERSION_11
+}

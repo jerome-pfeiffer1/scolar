@@ -1,0 +1,7 @@
+package mc.lang;
+
+grammar Variable extends de.monticore.types.Types {
+
+  VariableDefinition = Type Name;
+
+}

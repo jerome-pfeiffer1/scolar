@@ -1,0 +1,12 @@
+package cocos.invalid;
+
+language component ReferencedProductionsHaveNoRightHandSide {
+
+  grammar mc.lang.G1;
+
+  provides production A for A;
+  provides production B for B;
+
+  requires optional embedding production OtherEP for A;
+  requires optional aggregation production JustAnotherEP for B;
+}

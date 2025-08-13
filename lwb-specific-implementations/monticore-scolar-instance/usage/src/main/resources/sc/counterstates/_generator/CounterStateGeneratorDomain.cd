@@ -1,0 +1,22 @@
+package sc.counterstates._generator;
+
+classdiagram CounterStateGeneratorDomain {
+
+  interface ICounterStateGenerator {
+    void generate(sc.counterstates._ast.ASTCounterState counterState, java.nio.file.Path path);
+
+    Class<?> getTargetInterface();
+  }
+  
+  class CounterStateGenerator implements ICounterStateGenerator;
+
+  interface ICounterState {
+    String getName();
+
+    Integer getCounterValue();
+
+    Integer getStepValue();
+
+    void visit();
+  }
+}

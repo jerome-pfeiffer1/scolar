@@ -1,0 +1,22 @@
+package sc.finalstate;
+
+import sc.finalstate.cocos.*;
+import sc.finalstate._generator.*;
+import sc.finalstate._generator.FinalStateGeneratorDomain.*;
+
+language component FinalState {
+
+  grammar sc.FinalState;
+
+  provides production FinalState for FState;
+
+  wfrs FinalStateCoCos for FState {
+     FinalStateNameUpperCase;
+  }
+
+  provides gen FinalStateGenerator for FState {
+    generator FinalStateGenerator;
+    producer IFinalStateGenerator;
+    product IFinalState;
+  }
+}

@@ -1,0 +1,21 @@
+package languagecomponents;
+
+import statecharts.Port2JavaProducer.*;
+import statecharts.Port2JavaProduct.*;
+
+language component PortTrafos {
+  grammar mc.lang.MontiArc;
+
+  provides gen Port2Java for Port {
+    producer ISCBehaviorGenerator;
+    product ITransitionSystemProduct;
+  }
+  
+  requires mandatory gen PortType2Java for Port {
+    producer ISCBehaviorGenerator;
+    product ITransitionSystemProduct;
+    
+  }
+
+  Port2Java implies PortType2Java;
+}

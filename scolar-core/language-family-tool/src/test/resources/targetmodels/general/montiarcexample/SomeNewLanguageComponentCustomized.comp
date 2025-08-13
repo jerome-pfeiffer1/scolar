@@ -1,0 +1,63 @@
+package general.montiarcexample.montiarc;
+
+language component SomeNewLanguageComponentCustomized{
+
+  grammar mc.lang.MontiArcWithStateChartsWithVariableWithOCLInvariant;
+
+  provides production Komponente for Component;
+
+  requires optional production Verhalten for BehaviorElement;
+
+  requires optional production Invariante for MontiArcInvariant;
+
+  wfrs BasicCocos for Connector {
+    mc.lang.montiarc.cocos.ConnectorSourceAndTargetExistAndFit;
+  }
+
+  wfrs NoInnerComponents for Component {
+    mc.lang.montiarc.cocos.PreventInnerComponents;
+  }
+
+  gen context general.montiarcexample.montiarc._generator.MA2Java;
+
+  gen context general.montiarcexample.montiarc._generator.MAInv2Java;
+
+  provides gen Komponente2Java of
+      Component with {
+    producer general.montiarcexample.montiarc._generator.MA2Java.IMontiArc2JavaGenerator;
+    product general.montiarcexample.montiarc._generator.MA2Java.IComponent;
+  }
+
+  requires requires optional gen Verhalten2Java of
+      BehaviorElement with {
+    producer general.montiarcexample.montiarc._generator.MA2Java.IBehaviorGen;
+    product general.montiarcexample.montiarc._generator.MA2Java.IComputable;
+  }
+
+  requires requires optional gen Invariante2Java of
+      MontiArcInvariant with {
+    producer general.montiarcexample.montiarc._generator.MAInv2Java.IMAInvGen;
+    product general.montiarcexample.montiarc._generator.MAInv2Java.MAInvChecker;
+  }
+
+  parameter optional int max for wfr general.montiarcexample.statecharts.cocos.NumInitialStates;
+
+  requires optional production Var for SCElement;
+
+  requires requires optional gen SCElementTrafo of
+      SCElement with {
+    producer general.montiarcexample.statecharts._generator._producer.SCElement2JavaProducer.ISCElement2Java;
+    product general.montiarcexample.statecharts._generator._product.SCElement2JavaProduct.ISCElementBehavior;
+  }
+
+  gen context general.montiarcexample.variable._generator._producer.VarTrafosProducer;
+
+  gen context general.montiarcexample.variable._generator._product.VarTrafosProduct;
+
+  requires requires mandatory gen VarTrafo of
+      VariableDefinition with {
+    producer general.montiarcexample.variable._generator._producer.VarTrafosProducer.IVarGen;
+    product general.montiarcexample.variable._generator._product.VarTrafosProduct.IVariable;
+  }
+
+}

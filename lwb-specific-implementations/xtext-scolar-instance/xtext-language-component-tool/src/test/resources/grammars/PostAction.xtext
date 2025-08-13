@@ -1,0 +1,12 @@
+grammar postact.PostAction with org.eclipse.xtext.common.Terminals
+
+generate postAction "http://www.PostAction.postact"
+
+  TwitterAction:
+  	post=Post | direct=DirectMessage;
+
+  Post:
+  	"post" msg=STRING;
+  
+  DirectMessage:
+  	'@' user=ID msg=STRING; 

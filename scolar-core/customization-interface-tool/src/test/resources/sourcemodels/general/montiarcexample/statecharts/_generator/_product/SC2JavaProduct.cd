@@ -1,0 +1,7 @@
+package general.montiarcexample.statecharts._generator._product;
+
+classdiagram SC2JavaProduct {
+
+  interface ISCRTEBehavior;
+  
+}

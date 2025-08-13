@@ -1,0 +1,23 @@
+package cocos.languageComponents.invalid;
+
+import cocos._generator._producer.MA2JavaProducer.*;
+import cocos._generator._product.MA2JavaProduct.*;
+import cocos._generator._producer.MAInv2JavaProducer.*;
+import cocos._generator._product.MAInv2JavaProduct.*;
+
+
+language component ReferencedProducerAndProductInterfacesExists {
+  grammar mc.lang.MontiArc;
+
+  provides gen Komponente2Java for Component {
+    producer Xx;
+    product Xy;
+  }
+
+  requires mandatory gen Verhalten2Java for BehaviorElement {
+    producer Yz;
+    product  IComputable;
+  } 
+
+} 
+

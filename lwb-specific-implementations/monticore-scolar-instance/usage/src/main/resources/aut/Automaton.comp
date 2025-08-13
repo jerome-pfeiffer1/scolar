@@ -1,0 +1,17 @@
+package aut;
+
+language component Automaton {
+
+    grammar aut.Automata;
+
+    provides production ExtToOffer for State;
+    provides production NoUse for State;
+
+    requires mandatory aggregation production StateAdaption for State;
+
+    requires optional aggregation production AutomatonAdaption for Automaton;
+
+    wfrs InitialStateCoCos for State {
+            NumberOfInitialStatesCorrect;
+    }
+}

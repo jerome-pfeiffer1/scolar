@@ -1,0 +1,18 @@
+package gencomposition.domainmodel.montiarc;
+
+classdiagram MA2JavaProducer {
+  
+  interface IMontiArcGenerator {
+    public void generate(ASTMACompilationUnit ma, Path path);
+
+    public Class<?> getTargetInterface();
+
+    public void register(Class<? extends ASTNode> ep, IBehaviorGen behaviorGen);
+  }
+
+  class MA2Java implements IMontiArcGenerator;
+  
+  interface IBehaviorGen;
+  
+
+}

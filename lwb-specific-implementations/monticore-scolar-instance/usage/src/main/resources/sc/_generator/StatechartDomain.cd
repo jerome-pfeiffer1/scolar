@@ -1,0 +1,7 @@
+package sc._generator;
+
+classdiagram StatechartDomain {
+
+  class SCGenerator;
+  
+}

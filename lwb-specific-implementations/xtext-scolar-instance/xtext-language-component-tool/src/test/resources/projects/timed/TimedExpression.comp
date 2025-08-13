@@ -1,0 +1,11 @@
+package timed;
+
+language component TimedExpression {
+  grammar timed.TimedExpressionLang;
+
+  provides production Clock for ClockExpr;
+
+    wfrs TimeCorrectnessChecks for ClockExpr {
+      validation.NoNegativeTime;
+    }
+}

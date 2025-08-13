@@ -1,0 +1,16 @@
+package languagecomponents;
+
+language component SC {
+  grammar mc.lang.StateCharts;
+
+  wfrs BasicSCCoCos for Automaton {
+     mc.lang.statecharts.cocos.StateNamesUpperCase;
+     mc.lang.statecharts.cocos.ReferencedStatesExist;
+     mc.lang.statecharts.cocos.AtLeastOneState;
+     mc.lang.statecharts.cocos.NumInitialStates;
+  }
+
+  parameter optional int max for wfr mc.lang.statecharts.cocos.NumInitialStates;
+
+
+} 

@@ -1,0 +1,16 @@
+package cocos.languagefamily.invalid;
+
+family UsedFeaturesExist {
+
+
+  featurediagram BUU {
+    BUU -> ConnectorCorrect? | X?;
+    X -> Y;
+  }
+
+
+  feature ConnectorCorrect {
+    component general.montiarcexample.connectorCorrectness.ConnectorCorrectness;
+    wfrs ConnectorCorrect -> Architektur.ConnectorRule;
+  }
+}

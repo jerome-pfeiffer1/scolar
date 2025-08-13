@@ -1,0 +1,22 @@
+package timedexpr;
+
+import timedexpr.*;
+import timedexpr._cocos.*;
+import timedexpr._generator.TimedExprGeneratorDomain.*;
+
+language component TimedExpression {
+  grammar timedexpr.ClockExpression;
+
+  provides production Clock for ClockExpr;
+
+  provides gen TimedExprGenerator for ClockExpr {
+    generator TimedExpressionGenerator;
+    producer ITimedExprGenerator;
+    product ITimedExpr;
+  }
+
+  wfrs TimeCorrectnessChecks for ClockExpr {
+    NoNegativeTime;
+  }
+  
+}

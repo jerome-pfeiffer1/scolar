@@ -1,0 +1,11 @@
+package ascomposition;
+
+language component AutomataAgg {
+
+    grammar mc.lang.Automata;
+
+    provides production ExtToOffer for State;
+
+    requires optional aggregation production StateAdaption for State;
+
+}

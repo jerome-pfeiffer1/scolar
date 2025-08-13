@@ -1,0 +1,14 @@
+package languagecomponents;
+
+language component MontiArcGrammarForAgg {
+  grammar mc.lang.MontiArc;
+
+  provides production Komponente for Component;
+
+  requires mandatory embedding production Verhalten for BehaviorElement;
+  requires mandatory aggregation production Invariante for Invariant;
+
+  wfrs Test for Testing {
+    mc.lang.statecharts.cocos.Test;
+  }
+}

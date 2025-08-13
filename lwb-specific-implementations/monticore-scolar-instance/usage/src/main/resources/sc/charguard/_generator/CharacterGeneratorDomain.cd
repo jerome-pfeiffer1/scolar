@@ -1,0 +1,16 @@
+package sc.charguard._generator;
+
+classdiagram CharacterGeneratorDomain {
+
+  interface ICharacterGenerator {
+    public void generate(ASTCharacter c, Path path);
+
+    public Class<?> getTargetInterface();
+  }
+
+  class CharacterGenerator;
+
+  interface ICharacter {
+    public Char getCharacter();
+  }
+}

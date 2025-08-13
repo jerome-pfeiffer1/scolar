@@ -1,0 +1,14 @@
+package cocos._generator._product;
+
+classdiagram MA2JavaProduct {
+
+  interface IComputable {
+    public void compute();
+  }
+
+  interface IComponent {
+    public void init();
+  }
+}
+
+
