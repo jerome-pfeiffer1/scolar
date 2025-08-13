@@ -4,7 +4,7 @@
 
 ---
 
-## Overview (motivation)
+## Overview
 
 Modern software increasingly spans complex domains (manufacturing automation, robotics, aviation systems, software architecture) where domain experts must often collaborate on software artifacts. DSLs help domain experts express solutions in domain terms, but engineering DSLs is itself complex because it involves multiple artifacts (grammars, well-formedness rules, and code generators) and cross-layer integration.
 
