@@ -1,0 +1,9 @@
+package opcua._generator;
+
+classdiagram EnumGeneratorDomain {
+
+   interface IEnumGenerator;
+
+   interface IEnum;
+
+}

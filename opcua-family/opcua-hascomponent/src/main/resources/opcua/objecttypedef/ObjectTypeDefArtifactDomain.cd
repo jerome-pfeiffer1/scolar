@@ -1,0 +1,7 @@
+package opcua.objecttypedef;
+
+classdiagram ObjectTypeDefArtifactDomain {
+
+  interface IObjectTypeElement;
+
+}

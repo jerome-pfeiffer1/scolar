@@ -1,0 +1,15 @@
+package opcua;
+
+import opcua._generator.MethodGenDomain.*;
+
+language component Method {
+  grammar opcua.MethodObjectTypeElem;
+
+  provides production Method for Method;
+
+  provides gen MethodGen for Method {
+    generator MethodGenerator;
+    producer IMethodGenerator;
+    product IMethod;
+  }
+}

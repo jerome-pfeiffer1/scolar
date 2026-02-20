@@ -1,0 +1,31 @@
+package opcua;
+
+import opcua._generator._artifact.OPCUAArtifactDomain.*;
+import opcua._generator._producer.OPCUAProducerDomain.*;
+
+import opcua.datatypedef.DataTypeDefArtifactDomain.*;
+import opcua.datatypedef.DataTypeDefProducerDomain.*;
+
+import opcua.objecttypedef.ObjectTypeDefArtifactDomain.*;
+import opcua.objecttypedef.ObjectTypeDefProducerDomain.*;
+
+language component OPCUABase {
+    grammar opcua.OPCUA;
+
+    requires mandatory production CustomDataTypeDef for CustomDataTypeDef;
+    requires optional production ObjectTypeDefElements for ObjectTypeDefElements;
+
+    requires mandatory gen CustomDataTypeGenerator for CustomDataTypeDef {
+        generator OPCUAServerGenerator;
+        producer ICustomDataTypeDefGenerator;
+        product ICustomDataType;
+    }
+
+    requires mandatory gen ObjectTypeGen for ObjectTypeDefElements {
+        generator OPCUAServerGenerator;
+        producer IObjectTypeElementGenerator;
+        product IObjectTypeElement;
+    }
+}
+
+

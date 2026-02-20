@@ -1,0 +1,51 @@
+package opcua;
+
+import de.monticore.types.*;
+import de.monticore.literals.*;
+
+component grammar OPCUA extends MCBasicTypes, MCJavaLiterals {
+
+  OPCArtifact = "namespace" Name "{"
+    (URI | EndPoint | Version | ModelImport)+
+    OPCUAElement+
+  "}";
+
+  interface OPCUAElement = Name;
+
+  // METADATA
+  URI = "uri" String;
+  EndPoint = "endpoint" String;
+  Version = "version" VersionNumber;
+  ModelImport = "requires" url:String "version" VersionNumber;
+
+  // CUSTOM DATA TYPES
+  interface CustomDataTypeDef extends OPCUAElement = Name;
+
+  // OBJECTTYPE DEFINITION
+  ObjectTypeDef implements OPCUAElement = "objectType" Name ("extends" extendedType:Name)? "{" (Metadata | ObjectTypeDefElements)+ "}";
+  interface ObjectTypeDefElements = Name;
+
+  Property implements ObjectTypeDefElements  = "property" datatype:Name Name ("{" (Metadata | ModelingRule | VariableDataType | DefaultValue)+ "}")?;
+  // if variableType is empty it defaults to BaseDataVariableType
+  Variable implements ObjectTypeDefElements  = "variable" datatype:Name Name ((":")variableType:Name)? "{" (Metadata | ModelingRule | VariableDataType | DefaultValue)+ "}";
+  Component implements ObjectTypeDefElements = "component" type:Name Name "{" (Metadata | ModelingRule)+ "}";
+
+
+  interface Metadata;
+  // optionalPlac 0..n, mandatory place 1..n
+  ModelingRule = ["mandatory"] | ["optional"] | ["optional_placeholder"] | ["mandatory_placeholder"];
+  Description implements Metadata = "description" ":" String;
+  DisplayName implements Metadata = "display_name" ":" String;
+
+  // VARIABLE TYPE DEFINITION
+  VariableTypeDef implements OPCUAElement = "variableType" type:Name Name ("extends" extendedType:Name)? "{" (VariableDataType | ModelingRule | DefaultValue | Metadata)+ "}";
+
+  VariableDataType = "dataType" ":" Name;
+  DefaultValue  = "defaultValue" ":" Value;
+
+  Value = NumericLiteral | String;
+
+  token VersionNumber = ('0'..'9')+ "." ('0'..'9')+ "." ('0'..'9')+ ;
+
+
+}

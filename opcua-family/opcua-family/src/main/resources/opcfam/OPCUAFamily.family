@@ -1,0 +1,38 @@
+package opcfam;
+
+family OPCUAFamily {
+
+  featurediagram OPCUA {
+    OPCUA -> DataType? & Method?;
+    DataType -> Enum? & Struct?;
+  }
+
+  feature OPCUA {
+    component opcua.OPCUABase;
+  }
+
+  feature Method {
+    component opcua.Method;
+
+    production Method -> OPCUA.ObjectTypeDefElements;
+    gen MethodGen -> OPCUA.ObjectTypeGen;
+
+  }
+
+  abstract feature DataType;
+
+  feature Enum {
+    component opcua.Enum;
+
+    production Enum -> OPCUA.CustomDataTypeDef;
+    gen EnumGen -> OPCUA.CustomDataTypeGenerator;
+  }
+
+  feature Struct {
+      component opcua.Struct;
+
+      production Struct -> OPCUA.CustomDataTypeDef;
+      gen StructGen -> OPCUA.CustomDataTypeGenerator;
+  }
+
+}

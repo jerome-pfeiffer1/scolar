@@ -1,0 +1,29 @@
+pluginManagement {
+    repositories {
+        maven {
+            url = uri("https://nexus.se.rwth-aachen.de/content/groups/public/")
+        }
+        gradlePluginPortal()
+    }
+}
+
+rootProject.name = 'opcua-scolar'
+	
+include(':opcua-base')
+project(':opcua-base').projectDir = file("./opcua-base")
+include(':opcua-enum')
+project(':opcua-enum').projectDir = file("./opcua-enum")
+include(':opcua-struct')
+project(':opcua-struct').projectDir = file("./opcua-struct")
+include(':opcua-method')
+project(':opcua-method').projectDir = file("./opcua-method")
+include(':constraint-lang')
+project(':constraint-lang').projectDir = file("./constraint-lang")
+include(':opcua-variabletypes')
+project(':opcua-variabletypes').projectDir = file("./opcua-variabletypes")
+include(':opcua-hascomponent')
+project(':opcua-hascomponent').projectDir = file("./opcua-hascomponent")
+include(':opcua-hasproperties')
+project(':opcua-hasproperties').projectDir = file("./opcua-hasproperties")
+include(':opcua-family')
+project(':opcua-family').projectDir = file("./opcua-family")

@@ -1,0 +1,16 @@
+package opcua;
+
+import opcua._generator.EnumGeneratorDomain.*;
+
+language component Enum {
+  grammar opcua.EnumDataType;
+
+  provides production Enum for Enum;
+
+  provides gen EnumGen for Enum {
+    generator EnumGenerator;
+    producer IEnumGenerator;
+    product IEnum;
+  }
+
+}

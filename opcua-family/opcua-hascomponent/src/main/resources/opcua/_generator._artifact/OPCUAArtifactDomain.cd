@@ -1,0 +1,7 @@
+package opcua._generator._artifact;
+
+classdiagram OPCUAArtifactDomain {
+
+  interface IOPCUAServer;
+
+}

@@ -1,0 +1,13 @@
+package opcua;
+
+import de.monticore.types.*;
+import de.monticore.literals.*;
+
+grammar MethodObjectTypeElem extends MCBasicTypes, MCJavaLiterals {
+
+  Method = "method" Name "(" inputArgs:(Parameter || ",")* ")" "->" "(" outputArgs:(Parameter || ",")* ")";
+  // if variabletypename is empty default to BaseDataVariableType
+  // Corrected the optional group for variabletype
+  Parameter = type:Name isArray:["[]"]? name:Name (":" variabletype:Name)?;
+
+}

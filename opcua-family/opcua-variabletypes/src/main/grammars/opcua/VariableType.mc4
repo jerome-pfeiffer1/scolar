@@ -1,0 +1,25 @@
+package opcua;
+
+import de.monticore.types.*;
+import de.monticore.literals.*;
+
+component grammar VariableType extends MCBasicTypes, MCJavaLiterals {
+ // VARIABLE TYPE DEFINITION
+  VariableTypeDef = "variableType" type:Name Name ("extends" extendedType:Name)? "{" (VariableDataType | ModelingRule | DefaultValue | Metadata)+ "}";
+
+  interface Metadata;
+  // optionalPlac 0..n, mandatory place 1..n
+  ModelingRule = ["mandatory"] | ["optional"] | ["optional_placeholder"] | ["mandatory_placeholder"];
+  Description implements Metadata = "description" ":" String;
+  DisplayName implements Metadata = "display_name" ":" String;
+
+
+  VariableDataType = "dataType" ":" Name;
+  DefaultValue  = "defaultValue" ":" Value;
+
+  Value = NumericLiteral | String;
+
+  token VersionNumber = ('0'..'9')+ "." ('0'..'9')+ "." ('0'..'9')+ ;
+
+
+}

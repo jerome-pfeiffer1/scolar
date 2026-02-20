@@ -1,0 +1,5 @@
+constraint Test for Speed {
+
+  Speed < 5 and Speed > 2
+
+}

@@ -1,0 +1,15 @@
+package opcua;
+
+import opcua._generator.StructGeneratorDomain.*;
+
+language component Struct {
+  grammar opcua.StructDataType;
+
+  provides production Struct for Struct;
+
+  provides gen StructGen for Struct {
+    generator StructGenerator;
+    producer IStructGenerator;
+    product IStruct;
+  }
+}

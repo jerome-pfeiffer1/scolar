@@ -1,0 +1,10 @@
+package opcua._generator;
+
+
+classdiagram MethodGenDomain {
+
+  interface IMethod;
+
+  interface IMethodGenerator;
+
+}

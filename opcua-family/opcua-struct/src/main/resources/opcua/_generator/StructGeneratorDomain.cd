@@ -1,0 +1,9 @@
+package opcua._generator;
+
+classdiagram StructGeneratorDomain {
+
+  interface IStruct;
+
+  interface IStructGenerator;
+
+}

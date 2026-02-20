@@ -1,0 +1,23 @@
+package opcua;
+
+import constraints._generator.ConstraintGeneratorDomain.*;
+
+language component Constraint {
+  grammar constraints.Constraint;
+
+  provides production ConstraintDef;
+  requires production Expression;
+
+  provides gen ConstraintGen for ConstraintDef {
+    generator ConstraintGenerator;
+    producer  IConstraintGenerator;
+    product   IConstraintCheck;
+  }
+
+  requires gen ExpressionGen for Expression {
+    generator ExpressionGen;
+    producer  IExpressionGen;
+    product   IExpr;
+  }
+
+}

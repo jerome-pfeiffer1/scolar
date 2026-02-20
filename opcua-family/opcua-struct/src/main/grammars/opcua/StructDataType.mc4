@@ -1,0 +1,12 @@
+package opcua;
+
+import de.monticore.types.*;
+import de.monticore.literals.*;
+
+grammar StructDataType extends MCBasicTypes, MCJavaLiterals {
+
+  Struct = "struct" Name "{" Parameter+ "}";
+
+  Parameter = type:Name isArray:["[]"]? name:Name (":" variabletype:Name)?;
+
+}

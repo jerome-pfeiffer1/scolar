@@ -1,0 +1,60 @@
+package constraints;
+
+import de.monticore.types.*;
+import de.monticore.literals.*;
+import de.monticore.ocl.*;
+
+grammar Constraint extends MCBasicTypes, MCJavaLiterals {
+
+    ConstraintDef = "constraint" Name "for" node:Name "{" Expression+ "}";
+
+    interface Expression;
+
+    BooleanAndOpExpression implements Expression =
+      left:Expression operator:"and" right:Expression;
+
+    BooleanOrOpExpression implements Expression =
+      left:Expression operator:"or" right:Expression;
+
+    LogicalNotExpression implements Expression = "not" Expression;
+
+    MultExpression implements Expression =
+      left:Expression operator:"*" right:Expression;
+
+    DivideExpression implements Expression =
+      left:Expression operator:"/" right:Expression;
+
+    ModuloExpression implements Expression =
+      left:Expression operator:"%" right:Expression;
+
+    PlusExpression implements Expression =
+      left:Expression operator:"+" right:Expression;
+
+    MinusExpression implements Expression  =
+      left:Expression operator:"-" right:Expression;
+
+    LessEqualExpression implements Expression =
+      left:Expression operator:"<=" right:Expression;
+
+    GreaterEqualExpression implements Expression =
+      left:Expression operator:">=" right:Expression;
+
+    LessThanExpression implements Expression =
+      left:Expression operator:"<" right:Expression;
+
+    GreaterThanExpression implements Expression =
+      left:Expression operator:">" right:Expression;
+
+    EqualsExpression implements Expression =
+      left:Expression operator:"==" right:Expression;
+
+    NotEqualsExpression implements Expression =
+      left:Expression operator:"!=" right:Expression;
+
+    BracketExpression implements Expression <310>
+      =  "(" Expression ")";
+
+    ArrayAccessExpression implements Expression <250> =
+      Expression "[" indexExpression:Expression "]";
+
+}

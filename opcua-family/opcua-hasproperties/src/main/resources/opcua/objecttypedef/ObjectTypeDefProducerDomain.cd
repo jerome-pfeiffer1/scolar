@@ -1,0 +1,7 @@
+package opcua.objecttypedef;
+
+classdiagram ObjectTypeDefProducerDomain {
+
+  interface IObjectTypeElementGenerator;
+
+}

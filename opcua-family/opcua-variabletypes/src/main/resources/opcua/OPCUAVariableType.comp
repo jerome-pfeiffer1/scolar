@@ -1,0 +1,20 @@
+package opcua;
+
+language component OPCUAVariableType {
+  grammar opcua.EnumDataType;
+
+  provides production VariableTypeDef;
+
+  wfrs VariableIntegrity for VariableTypeDef {
+    NamesUpperCase
+  }
+
+  provides gen VariableTypeGen for VariableTypeDef {
+    generator VarTypeGenerator;
+    producer IVarTypeGenerator;
+    product IVariable;
+  }
+
+}
+
+

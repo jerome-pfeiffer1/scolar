@@ -1,0 +1,8 @@
+package opcua.datatypedef;
+
+classdiagram DataTypeDefArtifactDomain {
+
+  interface ICustomDataType;
+
+
+}
