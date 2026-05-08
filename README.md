@@ -1,6 +1,6 @@
 # SCOLAR — Systematic Component-Oriented Language Reuse
 
-**SCOLAR** is a framework for systematic, component-oriented reuse of textual, external, translational Domain-Specific Languages (DSLs). It demonstrates how to package language fragments as reusable **language components** and arrange them into **language families** to enable configurable, technology-independent DSL derivation and customization.
+**SCOLAR** is a framework for systematic, component-oriented reuse of textual, external, translational Domain-Specific Languages (DSLs). It demonstrates how to package language fragments as reusable **language components** and arrange them into **language product lines** to enable configurable, technology-independent DSL derivation and customization.
 
 ---
 
@@ -8,14 +8,14 @@
 
 Modern software increasingly spans complex domains (manufacturing automation, robotics, aviation systems, software architecture) where domain experts must often collaborate on software artifacts. DSLs help domain experts express solutions in domain terms, but engineering DSLs is itself complex because it involves multiple artifacts (grammars, well-formedness rules, and code generators) and cross-layer integration.
 
-SCOLAR aims to reduce this complexity by providing a top-down method for language reuse: encapsulate syntax and semantics of language fragments into language components, organize these components into language families (feature-based product lines), and compose or customize them to derive usable DSLs independent of any single language workbench.
+SCOLAR aims to reduce this complexity by providing a top-down method for language reuse: encapsulate syntax and semantics of language fragments into language components, organize these components into language product lines (feature-based), and compose or customize them to derive usable DSLs independent of any single language workbench.
 
 ---
 
 ## Key ideas & features
 
 - **Language components**: Modular units that encapsulate a MontiCore grammar, well-formedness rule sets, and model-to-text (generator) transformations. Each component exposes an explicit interface with extension and provision points.
-- **Language families**: Product-line-like groupings of components realized by a feature diagram. Selecting features configures which components and bindings are applied.
+- **Language product lines**: Product-line-like groupings of components realized by a feature diagram. Selecting features configures which components and bindings are applied.
 - **Bindings & composition**: Components are composed using bindings (grammar bindings, generator bindings, well-formedness rule bindings, and insertion bindings) that map provision points to extension points.
 - **Technology independence**: The method is independently of a single workbench; the included tutorial demonstrates use with MontiCore.
 
