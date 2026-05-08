@@ -1,48 +1,66 @@
-# SCOLAR — Systematic Component-Oriented Language Reuse
+<h1 align="center">SCOLAR</h1>
 
-**SCOLAR** is a framework for systematic, component-oriented reuse of textual, external, translational Domain-Specific Languages (DSLs). It demonstrates how to package language fragments as reusable **language components** and arrange them into **language product lines** to enable configurable, technology-independent DSL derivation and customization.
+<p align="center">
+  <strong>Systematic Component-Oriented Language Reuse</strong>
+</p>
 
----
+<p align="center">
+  <img alt="Java" src="https://img.shields.io/badge/Java-11-blue.svg">
+  <img alt="Gradle" src="https://img.shields.io/badge/Gradle-7.6-02303A.svg">
+  <img alt="License" src="https://img.shields.io/badge/License-BSD_3--Clause-green.svg">
+</p>
 
-## Overview
-
-Modern software increasingly spans complex domains (manufacturing automation, robotics, aviation systems, software architecture) where domain experts must often collaborate on software artifacts. DSLs help domain experts express solutions in domain terms, but engineering DSLs is itself complex because it involves multiple artifacts (grammars, well-formedness rules, and code generators) and cross-layer integration.
-
-SCOLAR aims to reduce this complexity by providing a top-down method for language reuse: encapsulate syntax and semantics of language fragments into language components, organize these components into language product lines (feature-based), and compose or customize them to derive usable DSLs independent of any single language workbench.
-
----
-
-## Key ideas & features
-
-- **Language components**: Modular units that encapsulate a MontiCore grammar, well-formedness rule sets, and model-to-text (generator) transformations. Each component exposes an explicit interface with extension and provision points.
-- **Language product lines**: Product-line-like groupings of components realized by a feature diagram. Selecting features configures which components and bindings are applied.
-- **Bindings & composition**: Components are composed using bindings (grammar bindings, generator bindings, well-formedness rule bindings, and insertion bindings) that map provision points to extension points.
-- **Technology independence**: The method is independently of a single workbench; the included tutorial demonstrates use with MontiCore.
+**SCOLAR** is a framework for the systematic, component-oriented reuse of textual, external, translational Domain-Specific Languages (DSLs). It demonstrates how to package language fragments as reusable **language components** and arrange them into **language product lines** to enable configurable, technology-independent DSL derivation and customization.
 
 ---
 
-## Requirements
+## 📖 Overview
 
-- Java JDK 11 (or compatible JVM)
-- Gradle (the project references Gradle 7.6)
+Modern software increasingly spans complex domains (manufacturing automation, robotics, aviation systems, software architecture) where domain experts must collaborate on software artifacts. While DSLs help domain experts express solutions in their own terms, engineering these DSLs is inherently complex due to the multiple artifacts involved (grammars, well-formedness rules, code generators) and cross-layer integration.
+
+**SCOLAR** reduces this complexity by providing a top-down method for language reuse:
+1. **Encapsulate** syntax and semantics of language fragments into language components.
+2. **Organize** these components into feature-based language product lines.
+3. **Compose & Customize** them to derive usable DSLs independent of any single language workbench.
+
 ---
 
-## Getting started (tutorial)
+## ✨ Key Ideas & Features
 
-1. Clone the repository:
+*   🧩 **Language Components:** Modular units encapsulating a MontiCore grammar, well-formedness rule sets, and model-to-text (generator) transformations. Each component exposes an explicit interface with *extension* and *provision* points.
+*   🗂️ **Language Product Lines:** Product-line-like groupings of components realized by a feature diagram. Selecting features configures which components and bindings are applied.
+*   🔗 **Bindings & Composition:** Components are composed using bindings (grammar, generator, well-formedness rule, and insertion bindings) that precisely map provision points to extension points.
+*   🛠️ **Technology Independence:** The core method is independent of a single workbench (the included tutorial demonstrates practical use with MontiCore).
 
+---
+
+## ⚙️ Requirements
+
+To build and run SCOLAR, you will need:
+*   **Java JDK 11** (or a compatible JVM)
+*   **Gradle** (the project references `v7.6`)
+
+---
+
+## 🚀 Getting Started
+
+Follow these steps to run the tutorial locally:
+
+**1. Clone the repository:**
 ```bash
-git clone https://github.com/jerome-pfeiffer1/scolar.git
+git clone [https://github.com/jerome-pfeiffer1/scolar.git](https://github.com/jerome-pfeiffer1/scolar.git)
 cd scolar
 ```
 
-2. Build the projects `scolar-core` and `lwb-specific-implementations/scolar-monticore-instance` using gradle.
+**2. Build the projects:**
+`scolar-core` and `lwb-specific-implementations/scolar-monticore-instance` using gradle.
 
-3. Explore the tutorial project and the comprised explanations.
+**3. Explore:**
+Navigate through the tutorial project and its comprised explanations to see SCOLAR in action.
 
 ---
 
-## Project structure
+## 📁 Project Structure
 
 - `scolar-core/` — core runtime and libraries for SCOLAR concepts (if present).
 - `lwb-specific-implementations/` — technology-specific implementations (MontiCore adapters, wrappers, or templates).
@@ -54,7 +72,7 @@ cd scolar
 
 ---
 
-## Contributing
+## 🤝 Contributing
 
 Contributions, bug reports, and pull requests are welcome. If you plan larger changes (new language workbench support, major refactor), please open an issue first so we can discuss design compatibility with the SCOLAR model.
 
@@ -66,7 +84,7 @@ When contributing:
 
 ---
 
-## Citation
+## 📚 Citation
 If you use SCOLAR in research or publications, please cite the relevant work by the authors:
 - **Muctadir, H.M., Pfeiffer, J., Houdijk, J., Cleophas, L., Wortmann, A.** – [A Taxonomy of Change Types for Textual DSL Grammars](doi.org/10.5220/0013127800003896), 13th International Conference on Model-Based Software and Systems Engineering, 2025
 - **Lehner, D., Pfeiffer, J., Klikovits, S., Wortmann, A., Wimmer, M.** – [A Method for Template-based Architecture Modeling and its Application to Digital Twins](http://dx.doi.org/10.5381/jot.2024.23.3.a8), Journal of Object Technology, 23(3), 2024
@@ -81,7 +99,6 @@ If you use SCOLAR in research or publications, please cite the relevant work by 
 
 ---
 
-## Contact & authorship
-
+📬 Contact & Authorship
 This project is maintained by the repository owner. For questions about the tutorial or publications that motivated SCOLAR, please refer to the repository owner profile on GitHub.
 
